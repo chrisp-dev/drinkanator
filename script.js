@@ -20,7 +20,11 @@ $(document).ready(function () {
     // https://rapidapi.com/developer/security/Drinkanator
     const cocktailKey = 'f5fa4c0484mshad6cb57c6f05a3fp195dcejsn6e3f9016299c'
 
-    function getById(api, id) {
+    /**
+     * Get Cocktail by CocktailId
+     * @param {Number} id 
+     */
+    function getById(id) {
         let url = buildUrl("lookup") + "i=" + id;
         getData(url).done(result => {
             console.log(result);
@@ -28,6 +32,10 @@ $(document).ready(function () {
         });;
     }
 
+    /**
+     * Get Random Cocktail with Optional query parameter
+     * @param {String} q 
+     */
     function getRandom(q) {
         let url = buildUrl("random") + "q=" + q;
         getData(url).done(result => {
@@ -36,6 +44,10 @@ $(document).ready(function () {
         });
     }
 
+    /**
+     * Get items from filter endpoint
+     * @param {String} q 
+     */
     function getFilterBy(q) {
         // a=Alcoholic a=non-Alcoholic
         // c=Cocktail c=Champagne_flute
@@ -47,52 +59,48 @@ $(document).ready(function () {
         });
     }
 
-    function getIngredients(q) {
-        let url = buildUrl("ingredients") + "i=" + q;
+    /**
+     * returns list of items
+     */
+    function getIngredients() {
+        let url = buildUrl("ingredients");
         getData(url).done(result => {
             console.log(result);
             renderDrinkInfo(JSON.stringify(result));
         });
     }
 
-    function getGlassTypes(q) {
-        let url = buildUrl("glass") + "c=" + q;
+    /**
+     * returns list of items
+     */
+    function getGlassTypes() {
+        let url = buildUrl("glass");
         getData(url).done(result => {
             console.log(result);
             renderDrinkInfo(JSON.stringify(result));
         });
     }
 
+    /**
+     * returns list of items
+     */
     function getCategories(q) {
-        let url = buildUrl("categories") + "c=" + q;
+        let url = buildUrl("categories");
         getData(url).done(result => {
             console.log(result);
             renderDrinkInfo(JSON.stringify(result));
         });
     }
 
+    /**
+     * returns non-alcoholic drinks
+     */
     function getNonAlcoholic() {
         let url = buildUrl("filter") + "a=Non-Alcoholic";
         getData(url).then(result => {
             console.log(reuslt);
             renderDrinkInfo(JSON.stringify(result));
-        })
-    }
-
-    // === WIP === WORK IN PROGRESS === WIP ===
-    // I thought maybe we would need a function to build our query
-    function buildQ() {
-        let filters = [];
-
-        // get inputs from user?
-
-        // stored alcohol preference?
-
-        // favorite ingredients?
-
-        // favorite glass type?
-
-        // category?
+        });
     }
 
     /**
