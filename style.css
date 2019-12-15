@@ -91,7 +91,6 @@ button{
      background-color: transparent;
      color: white;
      border: none;
-     text-align: 
      /* border: 5px solid white; */
      text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em deeppink, 0 0 0.5em deeppink, 0 0 0.1em #ff009d, 0 10px 3px #000;
      /* box-shadow:  0 0 20px #ff009d; */
@@ -159,7 +158,7 @@ span:nth-of-type(5){
      .logo{
           font-size: 50px;
      }
-
+}
 .btn{
     width: 100%;
 }
