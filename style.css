@@ -1,10 +1,169 @@
-.btn{
-width: 100%;
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+
+     /* font-family: 'Lilita One', cursive; */
+     /* font-family: 'Righteous', cursive; */
+     /* font-family: 'Baloo Bhai', cursive; */
+     /* font-family: 'Luckiest Guy', cursive; */
+     /* font-family: 'Monoton', cursive; */
+     /* font-family: 'Audiowide', cursive; */
+     font-family: 'Rye', cursive;
+     /* font-family: 'Aclonica', sans-serif; */
 }
 
 body{
-    background-color: #292929;
+     width: 100vw;
+     height: 100vh;
+     position: relative;
+     background-color: rgb(38, 43, 48);
 }
+
+.checkAge-wrapper{
+     position: absolute;
+     width: 100vw;
+     height: 100vh;
+     z-index: 10000;
+     background-color: black;
+     filter: blur(8px);
+     -webkit-filter: blur(8px);
+     
+     opacity: 0.5;  
+     /* overflow: hidden; */
+}
+
+.checkAge{
+     width: 45%;
+     height: 45%;
+     background: black;
+     opacity: 0.9;
+     z-index: 10000000;
+     border-radius: 10px;
+     color: white;
+     text-align: center;
+}
+
+.centered{
+     position: absolute;
+     top: 40%;
+     left: 50%;
+     transform: translate(-50%, -40%);
+}
+
+.centered1{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+}
+
+.border{
+     /* background: rgb(38, 43, 48); */
+     width: 980px;
+     height: 480px;
+     border-radius: 3.5px;
+}
+
+.logo{
+     width: 100%;
+     font-size: 150px;
+     text-align: center;
+     color: #ffffff;
+     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em aqua, 0 0 0.5em aqua, 0 0 0.1em aqua, 0 10px 3px #000;
+}
+
+.button-wrapper{
+     position: absolute;
+     top: 70%;
+     left: 50%;
+     transform: translate(-50%, -70%);
+     width: 50%;
+     display: flex;
+     justify-content: space-between;
+}
+
+button{
+     width: 45%;
+     height: 80px;
+     font-size: 35px;
+     border-radius: 5px;
+     background-color: transparent;
+     color: white;
+     border: none;
+     text-align: 
+     /* border: 5px solid white; */
+     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em deeppink, 0 0 0.5em deeppink, 0 0 0.1em #ff009d, 0 10px 3px #000;
+     /* box-shadow:  0 0 20px #ff009d; */
+}
+
+span:nth-of-type(2), span:nth-of-type(5){
+     color: #c0bfbf;
+}
+
+span:nth-of-type(2){
+     animation: blink infinite 2s;
+}
+
+span:nth-of-type(5){
+     animation: blink infinite 3s;
+}
+
+@keyframes blink {
+     78% { 
+       color: inherit;
+       text-shadow: inherit;
+     }
+     79%{
+        color: #333;
+     }
+     80% {
+       
+       text-shadow: none;
+     }
+     81% {
+       color: inherit;
+       text-shadow: inherit;
+     }
+     82% {
+       color: #333;
+       text-shadow: none;
+     }
+     83% {
+       color: inherit;
+       text-shadow: inherit;
+     }
+     92% {
+       color: #333;
+       text-shadow: none;
+     }
+     92.5% {
+       color: inherit;
+       text-shadow: inherit;
+     }
+}
+
+@media only screen and (max-width: 880px) {
+     .logo{
+          font-size: 100px;
+     }
+}
+
+@media only screen and (max-width: 570px) {
+     .logo{
+          font-size: 60px;
+     }
+}
+
+@media only screen and (max-width: 330px) {
+     .logo{
+          font-size: 50px;
+     }
+
+.btn{
+    width: 100%;
+}
+
 
 .likeIcon{
     color: rgb(110, 206, 110);
