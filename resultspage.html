@@ -6,41 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="flex mb-4">
-        <div class="w-full bg-gray-500">
-            <div class="h-auto m-4 bg-white">
+    <div class="flex">
+        <div class="w-full">
+            <div class="h-auto m-4 my-10 bg-white">
                 <div>
-                    <img src="https://placeholder.pics/svg/350x500" class="mx-auto">
+                    <img id="drinkImage" src="https://placeholder.pics/svg/350x500" class="mx-auto">
                 </div>
             </div>
         </div>
     </div>
-    <div class="flex mb-4">
-        <div class="w-1/2 bg-gray-500">
-            <div class="h-auto m-4 bg-white">
-                <div class="flex justify-center">
+    <div class="flex my-10">
+        <div class="w-1/2">
+            <div class="h-auto m-4 rounded-lg border-solid border-4 border-gray-600">
+                <div class="flex justify-center h-16">
                     <button
-                        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                        Button
+                        class="btn">
+                        <i class="far fa-times-circle fa-3x dislikeIcon"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="w-1/2 bg-gray-500">
-            <div class="h-auto m-4 bg-white">
-                <div class="flex justify-center">
+        <div class="w-1/2">
+            <div class="h-auto m-4 rounded-lg border-solid border-4 border-gray-600">
+                <div class="flex justify-center h-16">
                     <button
-                        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                        Button
+                        class="btn">
+                        <i class="far fa-heart fa-3x likeIcon"></i>
                     </button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/257de25400.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="script.js"></script>

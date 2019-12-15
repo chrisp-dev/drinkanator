@@ -134,7 +134,7 @@ $(document).ready(function () {
         $('body').prepend(txtNode);
     }
 
-    // TODO: move this to an event handler
+
     getNonAlcoholic();
     getRandom();
 
