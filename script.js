@@ -30,4 +30,17 @@ $(document).ready(function () {
 
     // TODO: move this to an event handler
     getData(cocktailApiUrl, 'vodka');
+
+
+
+
+    //get image data
+
+    
+
+
 });
+
+
+
+
