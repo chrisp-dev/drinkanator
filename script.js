@@ -140,7 +140,6 @@ $(document).ready(function () {
         var ingredients = data.drinks[0]
         console.log(ingredients)
         
-
     }
 
     $(".likeIcon").on("click", function(){
@@ -152,11 +151,9 @@ $(document).ready(function () {
     });
 
 
-
-
     getNonAlcoholic();
     getRandom();
-    // getIngredients();
+    
 
     // THESE WORK! -- TODO: event handlers
     // getIngredients();
@@ -164,4 +161,6 @@ $(document).ready(function () {
     // getFilterBy('Whiskey');
     // getFilterBy('Rum');
     // getFilterBy('Gin');
+
+    
 });
