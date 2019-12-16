@@ -27,9 +27,32 @@ $(document).ready(function () {
     function getById(id) {
         let url = buildUrl("lookup") + "i=" + id;
         getData(url).done(result => {
-            console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
-        });;
+            console.log(result.drinks[0]);
+
+            result = result.drinks[0];
+
+            let ingredients = [];
+            let idx = 1;
+            let ingredientsNotFound = true;
+
+            while (ingredientsNotFound) {
+                if (result[`strIngredient${idx}`] != null) {
+                    ingredients.push({ ingredient: result[`strIngredient${idx}`], measure: result[`strMeasure${idx}`] });
+                    console.log('in while: ', result[`strIngredient${idx}`]);
+                    idx++;
+                } else {
+                    ingredientsNotFound = false;
+                }
+            }
+
+            console.log('TCL: INGREDIENTS: ', ingredients);
+            console.log('TCLl Instructions: ', result.strInstructions)
+
+            //render ingredients modal
+            let modal = $('<div>');
+            let title = $('<h3>');
+            // title.text()
+        });
     }
 
     /**
@@ -39,7 +62,7 @@ $(document).ready(function () {
     function getRandom(q) {
         let url = buildUrl("random") + "q=" + q;
         getData(url).done(result => {
-            
+
             renderDrinkInfo(result);
         });
     }
@@ -55,7 +78,7 @@ $(document).ready(function () {
         let url = buildUrl("filter") + "i=" + q;
         getData(url).done(result => {
             console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
+            renderDrinkInfo(result);
         });
     }
 
@@ -66,7 +89,7 @@ $(document).ready(function () {
         let url = buildUrl("ingredients");
         getData(url).done(result => {
             console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
+            renderDrinkInfo(result);
         });
     }
 
@@ -77,7 +100,7 @@ $(document).ready(function () {
         let url = buildUrl("glass");
         getData(url).done(result => {
             console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
+            renderDrinkInfo(result);
         });
     }
 
@@ -88,7 +111,7 @@ $(document).ready(function () {
         let url = buildUrl("categories");
         getData(url).done(result => {
             console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
+            renderDrinkInfo(result);
         });
     }
 
@@ -99,7 +122,7 @@ $(document).ready(function () {
         let url = buildUrl("filter") + "a=Non-Alcoholic";
         getData(url).then(result => {
             console.log(reuslt);
-            renderDrinkInfo(JSON.stringify(result));
+            renderDrinkInfo(result);
         });
     }
 
@@ -128,26 +151,26 @@ $(document).ready(function () {
 
     function renderDrinkInfo(data) {
         // idDrink
+        console.log(data)
         // strAlcoholic
         var resultsImage = data.drinks[0].strDrinkThumb
         let tct = $("#resultsImage");
         tct.attr("src", resultsImage);
         tct.attr("style", "height:400px !important;");
-        console.log(resultsImage)
     }
 
-    $(".likeIcon").on("click", function(){
+    $(".likeIcon").on("click", function () {
         getRandom()
     });
 
-    $(".dislikeIcon").on("click", function(){
+    $(".dislikeIcon").on("click", function () {
         getRandom()
     });
 
 
-    getNonAlcoholic();
-    getRandom();
+    // getFilterBy();
 
+    getById(11415);
     // THESE WORK! -- TODO: event handlers
     // getIngredients();
     // getFilterBy('Vodka');
