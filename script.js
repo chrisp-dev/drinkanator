@@ -39,6 +39,7 @@ $(document).ready(function () {
     function getRandom(q) {
         let url = buildUrl("random") + "q=" + q;
         getData(url).done(result => {
+
             renderDrinkInfo(result);
         });
     }
@@ -142,8 +143,6 @@ $(document).ready(function () {
     $(".dislikeIcon").on("click", function(){
         getRandom()
     });
-
-
 
 
     getNonAlcoholic();
