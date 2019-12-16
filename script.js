@@ -39,7 +39,7 @@ $(document).ready(function () {
     function getRandom(q) {
         let url = buildUrl("random") + "q=" + q;
         getData(url).done(result => {
-            
+
             renderDrinkInfo(result);
         });
     }
@@ -147,6 +147,7 @@ $(document).ready(function () {
 
     getNonAlcoholic();
     getRandom();
+    // getIngredients();
 
     // THESE WORK! -- TODO: event handlers
     // getIngredients();
