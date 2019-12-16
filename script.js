@@ -39,8 +39,7 @@ $(document).ready(function () {
     function getRandom(q) {
         let url = buildUrl("random") + "q=" + q;
         getData(url).done(result => {
-            console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
+            renderDrinkInfo(result);
         });
     }
 
@@ -129,14 +128,27 @@ $(document).ready(function () {
     function renderDrinkInfo(data) {
         // idDrink
         // strAlcoholic
-        let txtNode = $("<p>");
-        txtNode.text(data);
-        $('body').prepend(txtNode);
+        var resultsImage = data.drinks[0].strDrinkThumb
+        let tct = $("#resultsImage");
+        tct.attr("src", resultsImage);
+        tct.attr("style", "height:400px !important;");
+        console.log(resultsImage)
     }
+
+    $(".likeIcon").on("click", function(){
+        getRandom()
+    });
+
+    $(".dislikeIcon").on("click", function(){
+        getRandom()
+    });
+
+
 
 
     getNonAlcoholic();
     getRandom();
+    // getIngredients();
 
     // THESE WORK! -- TODO: event handlers
     // getIngredients();
