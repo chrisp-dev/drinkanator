@@ -171,3 +171,13 @@ span:nth-of-type(5){
 .dislikeIcon{
     color:rgb(231, 110, 110);
 }
+
+.QQuestion{
+     font-size: 30px;
+     color: whitesmoke
+}
+
+.options{
+     font-size: 25px;
+     padding: 5px;
+}
