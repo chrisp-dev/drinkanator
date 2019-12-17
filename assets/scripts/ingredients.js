@@ -130,6 +130,7 @@ function renderAside() {
                 // what about hearted drinks
                 savedDrinks.forEach(rec => {
                     let drnk = $("<li>");
+                    drnk.addClass(["text-right", "text-white", "bg-grey-500", "hover:text-black", "hover:bg-gray-500"]);
                     drnk.text(rec.strDrink);
                     drnk.on('click', function () {
                         event.preventDefault();
@@ -140,11 +141,12 @@ function renderAside() {
             }
         } else {
             let li = $("<li>");
+            li.addClass('text-left');
             li.text(key);
             li.on("click", function () {
                 window.location.href = val[key];
             });
-            li.addClass('hover:text-white');
+            li.addClass(['uppercase', 'hover:text-white', "hover:bg-gray-500"]);
             ul.append(li);
         }
     })
