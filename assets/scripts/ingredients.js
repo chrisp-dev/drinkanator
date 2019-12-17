@@ -1,3 +1,6 @@
+// get local storage or set item to []
+let savedDrinks = JSON.parse(localStorage.getItem('savedDrinks')) || [];
+
 /**
     * Get Cocktail by CocktailId
     * @param {Number} id Unique ID of the drink you want the details for
@@ -50,7 +53,7 @@ function extractIngredients(data) {
 function renderIngredients(strDrink, imgSrc, ingredients) {
     let cardBack = $(".flip-card-back");
     let ul = $("<ul>");
-    $("#resultsImage").attr("src", imgSrc)
+    $("#resultsImage").attr("src", imgSrc);
 
     for (let i = 0; i < ingredients.length; i++) {
         if (i === 0) {
@@ -115,19 +118,38 @@ function renderAside() {
 
     // add navigation
     let ul = $("<ul>");
-    let pages = [{ home: "index.html" }, { results: "resultspage.html" }, { quiz: "quiz.html" }];
+    let qults;
+    let pages = [{ home: "index.html" }, { results: "resultspage.html" }, { quiz: "quiz.html" }, { quizults: '#quizults' }];
     pages.forEach(val => {
-        console.log(val);
-        let li = $("<li>");
         let key = Object.keys(val)[0];
-        li.text(key);
-        li.on("click", function () {
-            window.location.href = val[key];
-        });
-        li.addClass('hover:text-white');
-        ul.append(li);
+        qults = $('<ul>');
+        if (key === "quizults") {
+            if (!savedDrinks || savedDrinks.length === 0) {
+                // dont do things
+            } else {
+                // what about hearted drinks
+                savedDrinks.forEach(rec => {
+                    let drnk = $("<li>");
+                    drnk.text(rec.strDrink);
+                    drnk.on('click', function () {
+                        event.preventDefault();
+                        getDetail(rec.idDrink, renderIngredients);
+                    });
+                    qults.append(drnk);
+                });
+            }
+        } else {
+            let li = $("<li>");
+            li.text(key);
+            li.on("click", function () {
+                window.location.href = val[key];
+            });
+            li.addClass('hover:text-white');
+            ul.append(li);
+        }
     })
     $("aside").append(ul);
+    $("aside").append(qults);
 }
 
 renderAside();
