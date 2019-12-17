@@ -125,29 +125,30 @@ function displayIngredients() {
 $(document).on("click", "button", function () {
     userIng = $(this).text();
     // console.log(userIng);
-    getFilterBy(userIng);
+    getFilterByQuiz(userIng);
     returnListDrinks();
+    console.log("display quizDrinkRecommendation array")
+    console.log(quizDrinkRecommendation)
 })
 
 //function to return list the correct list of spriits by seasons
 function returnListDrinks() {
     if (userChoice[0] === "Summer") {
-        getFilterBy('Tequila');
-        getFilterBy('Rum');
+        getFilterByQuiz('Tequila');
+        getFilterByQuiz('Rum');
     } else if (userChoice[0] === "Fall") {
-        getFilterBy('Whiskey');
-        getFilterBy('Brandy');
+        getFilterByQuiz('Whiskey');
+        getFilterByQuiz('Brandy');
     } else if (userChoice[0] === "Winter") {
-        getFilterBy('Whiskey');
-        getFilterBy('Brandy');
+        getFilterByQuiz('Whiskey');
+        getFilterByQuiz('Brandy');
     } else if (userChoice[0] === "Spring") {
-        getFilterBy('Gin');
-        getFilterBy('Vodka');
+        getFilterByQuiz('Gin');
+        getFilterByQuiz('Vodka');
     }
 }
 
-console.log("display quizDrinkRecommendation array")
-console.log(quizDrinkRecommendation)
+
 
 
 // getFilterBy('whiskey');

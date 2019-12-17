@@ -144,6 +144,21 @@ function getFilterBy(q) {
 }
 
 /**
+ * Get items from filter endpoint
+ * @param {String} q 
+ */
+function getFilterByQuiz(q) {
+    // a=Alcoholic a=non-Alcoholic
+    // c=Cocktail c=Champagne_flute
+    // i=Lime i=Rum
+    let url = buildUrl("filter") + "i=" + q;
+    getData(url).done(result => {
+        console.log(result);
+        quizDrinkRecommendation.push(result);
+    });
+}
+
+/**
  * returns list of items
  */
 function getIngredients() {
