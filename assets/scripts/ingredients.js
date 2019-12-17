@@ -85,6 +85,49 @@ function getRandomDetail(q) {
     });
 }
 
+function renderAside() {
+    let aside = $("<aside>");
+    aside.addClass(['bg-blue-500', 'text-center', 'text-2xl', 'text-red-500']);
+
+    let body = $("body");
+
+    aside.attr("style", "cursor:pointer;width:300px;height:500px;z-index:1000;position:absolute;top:10%;transition:all 0.5s ease;");
+
+    body.append(aside);
+
+    let showAside = false;
+    $('.logo-brand').on('click', function () {
+        event.preventDefault();
+        console.log('this', showAside);
+        showAside = !showAside;
+        let aside = $("aside");
+        if (showAside) {
+            aside.addClass("in");
+            // aside.attr("style", "left:10px;");
+        } else {
+            aside.removeClass("in");
+            // aside.attr("style", "left:-195px;");
+        }
+    });
+
+    // add navigation
+    let ul = $("<ul>");
+    let pages = [{ home: "index.html" }, { results: "resultspage.html" }, { quiz: "quiz.html" }];
+    pages.forEach(val => {
+        console.log(val);
+        let li = $("<li>");
+        let key = Object.keys(val)[0];
+        li.text(key);
+        li.on("click", function () {
+            window.location.href = val[key];
+        });
+        li.addClass('hover:text-white');
+        ul.append(li);
+    })
+    $("aside").append(ul);
+}
+
+renderAside();
 
 // event handlers for like and dislike
 $(".likeIcon").on("click", function () {
