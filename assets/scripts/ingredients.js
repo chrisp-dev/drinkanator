@@ -9,6 +9,7 @@ let savedDrinks = JSON.parse(localStorage.getItem('savedDrinks')) || [];
     * you create the renderFn and pass it in like so:
     * @usage getDetail(11415, renderIngredients);
     */
+   let thisDrink = ''
 function getDetail(id, renderFn) {
     let url = buildUrl("lookup") + "i=" + id;
     getData(url).done(result => {
@@ -86,8 +87,9 @@ function getRandomDetail(q) {
     getData(url).done(result => {
         getDetail(result.drinks[0].idDrink, renderIngredients);
         //console.log(result)
-        heartedDrinks.push(result)
-        //console.log(heartedDrinks)
+       thisDrink = result;
+
+        // console.log(heartedDrinks)
     });
 }
 
@@ -156,18 +158,34 @@ renderAside();
 
 // event handlers for like and dislike
 $(".likeIcon").on("click", function () {
+    // flag=true;
+    
+    console.log("liked")
+    heartedDrinks.push(thisDrink)
+    
     getRandomDetail()
+    showHeartedDrinks()
 });
 
 $(".dislikeIcon").on("click", function () {
+    // flag = false;
     getRandomDetail()
 });
 
 //store all the drinks the user "hearted" into this array
 var heartedDrinks = []
+var hdIndex = 0;
+var flag = false;
 
 //display list of hearted drinks in a list
+function showHeartedDrinks(){
 
+    let li = $("<li>");
+    li.text(heartedDrinks[hdIndex].drinks[0].strDrink)
+    hdIndex++;
+    $("ul").append(li);
+    // console.log(heartedDrinks[i].drinks[0].strDrink);
+}
 //store hearted drinks into locale storage
 
 //get locale storage items and display
