@@ -5,16 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Quiz</title>
     <script src="https://kit.fontawesome.com/257de25400.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles/style2.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
 
 </head>
 
 <body>
+    <div class="loader hidden object-center"></div>
+    <div class="logo-brand text-base object-left">
+        <span>D</span>
+        <span>R</span>
+        <span>i</span>
+        <span>N</span>
+        <span>K</span>
+        <span>R</span>
+    </div>
     <div class="flex text-center">
-        <div class="w-full m-6 md:w-1/2 md:mx-auto">
+        <div class="w-full m-6 md:w-2/3 md:mx-auto">
             <p class="QQuestion">
                 <span id="QuizQuestion">Question</span>
             </p>
@@ -24,13 +34,13 @@
     <div class="flex text-center quizcontainer">
         <!-- w- equates column size in fractions. this is currently column on the left -->
         <div class="w-1/2">
-            <div class="h-auto bg-white ">
-                <div class="next">
+            <div class="h-auto">
+                <div class="next md:m-4">
                     <img id="image1" src="http://placehold.jp/300x450.png" class="mx-auto">
                     <p class="options"><span class="ans" data-options="1">Answer1</span></p>
                 </div>
 
-                <div class="next">
+                <div class="next md:m-4">
                     <img id="image2" src="http://placehold.jp/300x450.png" class="mx-auto">
                     <p class="options"><span class="ans" data-options="2">Answer2</span></p>
                 </div>
@@ -38,13 +48,13 @@
         </div>
         <!-- w- equates column size in fractions. this is currently column on the right -->
         <div class="w-1/2">
-            <div class="h-auto bg-white ">
-                <div class="next">
+            <div class="h-auto">
+                <div class="next md:m-4">
                     <img id="image3" src="http://placehold.jp/300x450.png" class="mx-auto">
                     <p class="options"><span class="ans" data-options="3">Answer3</span></p>
                 </div>
 
-                <div class="next">
+                <div class="next md:m-4">
                     <img id="image4" src="http://placehold.jp/300x450.png" class="mx-auto">
                     <p class="options"><span class="ans" data-options="4">Answer4</span></p>
                 </div>
@@ -55,6 +65,7 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="assets/scripts/script.js"></script>
     <script src="assets/scripts/quiz.js"></script>
+    <script src="assets/scripts/ingredients.js"></script>
 </body>
 
 </html>

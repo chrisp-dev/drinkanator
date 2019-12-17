@@ -1,34 +1,17 @@
-var vodkaDrinkID = []
-// console.log(vodkaDrinkID)
-
-var whiskeyDrinkNameID = []
-
-var brandyDrinkNameID = []
-
-var ginDrinkNameID = []
-
-var tequilaDrinkNameID = []
-
-var rumDrinkNameID = []
-
-// getNonAlcoholic();
-// getRandom();
-// getIngredients();
-// THESE WORK! -- TODO: event handlers
-// getIngredients();
+//store list of drink IDs in this array to display drinks in the results page
+var quizDrinkRecommendation = []
 
 // creating an array of questions to display dynamically
-
 var quizQuestions = [{
-        title: "Which season do you thrive in?",
-        choices: ["Summer", "Fall", "Winter", "Spring"],
-        img: ["https://cdn.stocksnap.io/img-thumbs/960w/KKYCWTRLTI.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/1PUG5S0GO0.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/VZBJUVPO25.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/FKACWTMFK0.jpg"]
-    },
-    {
-        title: "What type of movies do you enjoy?",
-        choices: ["Romantic", "Comedy", "Action", "Horror"],
-        img: ["https://cdn.stocksnap.io/img-thumbs/960w/CNO1FTRUAP.jpg", "https://www.system-concepts.com/wp-content/uploads/2018/04/iStock-908333824-cool-granny1-1000px.jpg", "https://miro.medium.com/max/1180/0*7F-QqYhSJLC59U4w.", "https://images.alphacoders.com/787/thumb-350-787294.png"]
-    }
+    title: "WHICH SEASON DO YOU THRIVE IN?",
+    choices: ["Summer", "Fall", "Winter", "Spring"],
+    img: ["assets/images/summer2.jpg", "assets/images/fall2.jpg", "assets/images/winter2.jpg", "assets/images/spring2.jpg"]
+},
+{
+    title: "WHAT TYPE OF MOVIES DO YOU ENJOY?",
+    choices: ["Romantic", "Comedy", "Action", "Horror"],
+    img: ["https://cdn.stocksnap.io/img-thumbs/960w/CNO1FTRUAP.jpg", "https://www.system-concepts.com/wp-content/uploads/2018/04/iStock-908333824-cool-granny1-1000px.jpg", "https://miro.medium.com/max/1180/0*7F-QqYhSJLC59U4w.", "https://images.alphacoders.com/787/thumb-350-787294.png"]
+}
 ]
 
 //array of variables for movie types
@@ -58,13 +41,15 @@ var springsSpirits = ["gin", "vodka"]
 //counter for the index
 var counter = 0;
 
+let quizCompl = false;
+
 //function to generate quiz questions
 function renderQuestion() {
     if (counter >= quizQuestions.length) {
         $(".quizcontainer").css("display", "none")
-        $("#QuizQuestion").text("Ingredients")
+        $("#QuizQuestion").text("SELECT AN INGREDIENT")
+        quizCompl = true;
         displayIngredients();
-        // console.log(userChoice)
     } else {
         $("#QuizQuestion").text(quizQuestions[counter].title)
         var options = $(".ans");
@@ -97,14 +82,16 @@ function displayIngredients() {
     // console.log(userChoice)
     var ingContainer = $("<div>")
     ingContainer.attr("class", "ingContainer")
+    ingContainer.addClass(["w-1/2", "mx-auto"])
     $("body").append(ingContainer)
 
     //if statement to render the correct array
     if (userChoice[1] === "Romantic") {
-        console.log(romanticIng)
+        // console.log(romanticIng)
         for (var i = 0; i < romanticIng.length; ++i) {
             var listBtn = $("<button>")
             listBtn.attr("class", "listBtn")
+            listBtn.addClass(["hover:text-blue-500", "hover:bg-white"])
             $(".ingContainer").append(listBtn)
             listBtn.text(romanticIng[i])
         }
@@ -114,6 +101,7 @@ function displayIngredients() {
         for (var i = 0; i < comedyIng.length; ++i) {
             var listBtn = $("<button>")
             listBtn.attr("class", "listBtn")
+            listBtn.addClass(["hover:text-blue-500", "hover:bg-white"])
             $(".ingContainer").append(listBtn)
             listBtn.text(comedyIng[i])
         }
@@ -123,6 +111,7 @@ function displayIngredients() {
         for (var i = 0; i < actionIng.length; ++i) {
             var listBtn = $("<button>")
             listBtn.attr("class", "listBtn")
+            listBtn.addClass(["hover:text-blue-500", "hover:bg-white"])
             $(".ingContainer").append(listBtn)
             listBtn.text(actionIng[i])
         }
@@ -132,6 +121,7 @@ function displayIngredients() {
         for (var i = 0; i < horrorIng.length; ++i) {
             var listBtn = $("<button>")
             listBtn.attr("class", "listBtn")
+            listBtn.addClass(["hover:text-blue-500", "hover:bg-white"])
             $(".ingContainer").append(listBtn)
             listBtn.text(horrorIng[i])
         }
@@ -141,39 +131,23 @@ function displayIngredients() {
 //click event to grab the value the user selects when they see ingredients
 $(document).on("click", "button", function () {
     userIng = $(this).text();
-    console.log(userIng);
-    getFilterBy(userIng);
+    getFilterByQuiz(userIng);
     returnListDrinks();
 })
 
 //function to return list the correct list of spriits by seasons
 function returnListDrinks() {
     if (userChoice[0] === "Summer") {
-        getFilterBy('Tequila');
-        getFilterBy('Rum');
+        getFilterByQuiz('Tequila');
+        getFilterByQuiz('Rum', quizCompl);
+    } else if (userChoice[0] === "Fall") {
+        getFilterByQuiz('Whiskey');
+        getFilterByQuiz('Brandy', quizCompl);
+    } else if (userChoice[0] === "Winter") {
+        getFilterByQuiz('Whiskey');
+        getFilterByQuiz('Brandy', quizCompl);
+    } else if (userChoice[0] === "Spring") {
+        getFilterByQuiz('Gin');
+        getFilterByQuiz('Vodka', quizCompl);
     }
-
-    if (userChoice[0] === "Fall") {
-        getFilterBy('whiskey');
-        getFilterBy('Brandy');
-    }
-
-    if (userChoice[0] === "Winter") {
-        getFilterBy('Whiskey');
-        getFilterBy('Brandy');
-    }
-
-    if (userChoice[0] === "Spring") {
-        getFilterBy('Gin');
-        getFilterBy('Vodka');
-    }
-
 }
-
-
-//create functions to pull drinks by ingredient type
-
-// getFilterBy('Whiskey');
-// getFilterBy('Rum');
-// getFilterBy('Gin');
-// getFilterBy('lemon');
