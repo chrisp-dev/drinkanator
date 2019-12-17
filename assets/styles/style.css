@@ -303,6 +303,7 @@ span:nth-of-type(5) {
 }
 
 aside {
+     overflow-y: scroll;
      left: -400px;
 }
 
