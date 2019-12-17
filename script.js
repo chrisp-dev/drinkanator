@@ -1,4 +1,3 @@
-$(document).ready(function () {
 
     // cocktail db stuff
     let alcoholicFilters = { strAlcoholic: ["Alcoholic", "Non alcoholic", "Optional alcohol", null] }
@@ -55,7 +54,6 @@ $(document).ready(function () {
         let url = buildUrl("filter") + "i=" + q;
         getData(url).done(result => {
             console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
         });
     }
 
@@ -151,7 +149,7 @@ $(document).ready(function () {
     });
 
 
-    getNonAlcoholic();
+    // getNonAlcoholic();
     getRandom();
     
 
@@ -163,4 +161,3 @@ $(document).ready(function () {
     // getFilterBy('Gin');
 
     
-});
