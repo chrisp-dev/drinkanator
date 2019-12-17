@@ -5,7 +5,7 @@ var quizDrinkRecommendation = []
 var quizQuestions = [{
         title: "WHICH SEASON DO YOU THRIVE IN?",
         choices: ["Summer", "Fall", "Winter", "Spring"],
-        img: ["assets/images/summer.jpg", "assets/images/fall.jpg", "assets/images/winter.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/FKACWTMFK0.jpg"]
+        img: ["assets/images/summer2.jpg", "assets/images/fall2.jpg", "assets/images/winter2.jpg", "assets/images/spring2.jpg"]
     },
     {
         title: "WHAT TYPE OF MOVIES DO YOU ENJOY?",
@@ -147,7 +147,6 @@ function returnListDrinks() {
         getFilterByQuiz('Vodka');
     }
 }
-
 
 
 
