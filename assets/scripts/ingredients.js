@@ -9,7 +9,7 @@ let savedDrinks = JSON.parse(localStorage.getItem('savedDrinks')) || [];
     * you create the renderFn and pass it in like so:
     * @usage getDetail(11415, renderIngredients);
     */
-   let thisDrink = ''
+let thisDrink = ''
 function getDetail(id, renderFn) {
     let url = buildUrl("lookup") + "i=" + id;
     getData(url).done(result => {
@@ -19,7 +19,7 @@ function getDetail(id, renderFn) {
 
         // pass the Name of the drink, the image, and the ingredients 
         // to the render function
-        renderFn(result.strDrink, result.strDrinkThumb, ingredients);
+        renderFn('resultsImage', result.strDrink, result.strDrinkThumb, ingredients);
     });
 }
 
@@ -51,10 +51,10 @@ function extractIngredients(data) {
  * @param {String} imgSrc 
  * @param {Object} ingredients
  */
-function renderIngredients(strDrink, imgSrc, ingredients) {
+function renderIngredients(eleId, strDrink, imgSrc, ingredients) {
     let cardBack = $(".flip-card-back");
     let ul = $("<ul>");
-    $("#resultsImage").attr("src", imgSrc);
+    $(`#${eleId}`).attr("src", imgSrc);
 
     for (let i = 0; i < ingredients.length; i++) {
         if (i === 0) {
@@ -87,7 +87,7 @@ function getRandomDetail(q) {
     getData(url).done(result => {
         getDetail(result.drinks[0].idDrink, renderIngredients);
         //console.log(result)
-       thisDrink = result;
+        thisDrink = result;
 
         // console.log(heartedDrinks)
     });
@@ -161,10 +161,10 @@ renderAside();
 // event handlers for like and dislike
 $(".likeIcon").on("click", function () {
     // flag=true;
-    
+
     console.log("liked")
     heartedDrinks.push(thisDrink)
-    
+
     getRandomDetail()
     showHeartedDrinks()
 });
@@ -180,7 +180,7 @@ var hdIndex = 0;
 var flag = false;
 
 //display list of hearted drinks in a list
-function showHeartedDrinks(){
+function showHeartedDrinks() {
 
     let li = $("<li>");
     li.text(heartedDrinks[hdIndex].drinks[0].strDrink)
