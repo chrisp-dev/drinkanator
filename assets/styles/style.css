@@ -19,27 +19,68 @@ body {
      background-color: rgb(38, 43, 48);
 }
 
-.checkAge-wrapper {
+.black-trans-bkg{
      position: absolute;
      width: 100vw;
      height: 100vh;
      z-index: 10000;
      background-color: black;
-     filter: blur(8px);
-     -webkit-filter: blur(8px);
-     opacity: 0.5;
+     /* filter: blur(8px);
+     -webkit-filter: blur(8px); */
+     
+     opacity: 0.6;  
      /* overflow: hidden; */
 }
 
-.checkAge {
-     width: 45%;
-     height: 45%;
-     background: black;
-     opacity: 0.9;
+.checkAge-wrapper{
+
+     width: 48vw;
+     height: 27vw;
+     background-image: linear-gradient(to right, aqua, deeppink);
      z-index: 10000000;
      border-radius: 10px;
+}
+
+.checkAge{
+     width: 47vw;
+     height: 26vw;
+     padding: 10px;
+     background: black;
+     opacity: 0.9;
+     border-radius: 5px;
      color: white;
-     text-align: center;
+     /* text-align: center; */
+}
+
+p.text{
+     margin-top:5px;
+}
+
+.validateBtn-wrapper{
+     margin-top: 5px;
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+}
+
+button.validateBtn1{
+     background-color: transparent;
+     width: 45%;
+     border: 2px solid aqua;
+     padding: 1px;
+     color: aqua;
+     margin-bottom: 5px;
+     font-size: 14px;
+}
+
+button.validateBtn2{
+     background-color: transparent;
+     width: 45%;
+     border: 2px solid deeppink;
+     padding: 1px;
+     color: deeppink;
+     margin-bottom: 5px;
+     font-size: 18px;
 }
 
 .centered {
@@ -61,6 +102,11 @@ body {
      width: 980px;
      height: 480px;
      border-radius: 3.5px;
+}
+
+.content{
+     width: 100vw;
+     height: 100vh;
 }
 
 .logo {
@@ -92,7 +138,7 @@ body {
      justify-content: space-between;
 }
 
-button {
+button.homepgBtn {
      width: 45%;
      height: 80px;
      font-size: 35px;
@@ -103,6 +149,11 @@ button {
      /* border: 5px solid white; */
      text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em deeppink, 0 0 0.5em deeppink, 0 0 0.1em #ff009d, 0 10px 3px #000;
      /* box-shadow:  0 0 20px #ff009d; */
+     transition: 1s;
+}
+
+button.homepgBtn:hover{
+     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff0088, 0 0 0.5em #ff0088, 0 0 0.1em #ff0088, 0 10px 3px #000;
 }
 
 button:focus {
@@ -119,6 +170,10 @@ span:nth-of-type(2) {
 
 span:nth-of-type(5) {
      animation: blink infinite 3s;
+}
+
+.hide{
+     display: none;
 }
 
 @keyframes blink {
@@ -154,6 +209,19 @@ span:nth-of-type(5) {
      }
 }
 
+@media only screen and (max-width: 1000px) {
+     .checkAge-wrapper{
+
+          width: 80vw;
+          height: 45vw;
+     }
+     
+     .checkAge{
+          width: 79vw;
+          height: 44vw;
+     }
+}
+
 @media only screen and (max-width: 880px) {
      .logo {
           font-size: 100px;
@@ -165,6 +233,34 @@ span:nth-of-type(5) {
           font-size: 60px;
      }
 }
+
+@media only screen and (max-width: 425px) {
+     .checkAge-wrapper{
+
+          width: 80vw;
+          height: 60vw;
+     }
+     
+     .checkAge{
+          width: 79vw;
+          height: 59vw;
+          border-radius: 10px;
+     }
+}
+
+@media only screen and (max-width: 360px) {
+     .checkAge-wrapper{
+
+          width: 80vw;
+          height: 70vw;
+     }
+     
+     .checkAge{
+          width: 79vw;
+          height: 69vw;
+     }
+}
+
 
 @media only screen and (max-width: 330px) {
      .logo {
