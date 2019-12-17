@@ -9,8 +9,6 @@
 function getDetail(id, renderFn) {
     let url = buildUrl("lookup") + "i=" + id;
     getData(url).done(result => {
-        console.log(result.drinks[0]);
-
         result = result.drinks[0];
 
         let ingredients = extractIngredients(result);
@@ -34,7 +32,6 @@ function extractIngredients(data) {
     while (ingredientsNotFound) {
         if (data[`strIngredient${idx}`] != null) {
             ingredients.push({ ingredient: data[`strIngredient${idx}`], measure: data[`strMeasure${idx}`] });
-            console.log('in while: ', data[`strIngredient${idx}`]);
             idx++;
         } else {
             ingredientsNotFound = false;
