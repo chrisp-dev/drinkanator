@@ -80,6 +80,7 @@ function displayIngredients() {
     // console.log(userChoice)
     var ingContainer = $("<div>")
     ingContainer.attr("class", "ingContainer")
+    ingContainer.addClass(["w-1/2", "mx-auto"])
     $("body").append(ingContainer)
 
     //if statement to render the correct array
@@ -88,6 +89,7 @@ function displayIngredients() {
         for (var i = 0; i < romanticIng.length; ++i) {
             var listBtn = $("<button>")
             listBtn.attr("class", "listBtn")
+            listBtn.addClass(["hover:text-blue-500", "hover:bg-white"])
             $(".ingContainer").append(listBtn)
             listBtn.text(romanticIng[i])
         }
@@ -97,6 +99,7 @@ function displayIngredients() {
         for (var i = 0; i < comedyIng.length; ++i) {
             var listBtn = $("<button>")
             listBtn.attr("class", "listBtn")
+            listBtn.addClass(["hover:text-blue-500", "hover:bg-white"])
             $(".ingContainer").append(listBtn)
             listBtn.text(comedyIng[i])
         }
@@ -106,6 +109,7 @@ function displayIngredients() {
         for (var i = 0; i < actionIng.length; ++i) {
             var listBtn = $("<button>")
             listBtn.attr("class", "listBtn")
+            listBtn.addClass(["hover:text-blue-500", "hover:bg-white"])
             $(".ingContainer").append(listBtn)
             listBtn.text(actionIng[i])
         }
@@ -115,6 +119,7 @@ function displayIngredients() {
         for (var i = 0; i < horrorIng.length; ++i) {
             var listBtn = $("<button>")
             listBtn.attr("class", "listBtn")
+            listBtn.addClass(["hover:text-blue-500", "hover:bg-white"])
             $(".ingContainer").append(listBtn)
             listBtn.text(horrorIng[i])
         }

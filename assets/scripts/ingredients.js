@@ -82,6 +82,9 @@ function getRandomDetail(q) {
     let url = buildUrl("random") + "q=" + q;
     getData(url).done(result => {
         getDetail(result.drinks[0].idDrink, renderIngredients);
+        //console.log(result)
+        heartedDrinks.push(result)
+        //console.log(heartedDrinks)
     });
 }
 
@@ -137,3 +140,15 @@ $(".likeIcon").on("click", function () {
 $(".dislikeIcon").on("click", function () {
     getRandomDetail()
 });
+
+//store all the drinks the user "hearted" into this array
+var heartedDrinks = []
+
+//display list of hearted drinks in a list
+
+//store hearted drinks into locale storage
+
+//get locale storage items and display
+
+
+
