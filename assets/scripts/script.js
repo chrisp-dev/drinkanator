@@ -164,3 +164,7 @@ getRandom();
 function navQuiz() {
     window.location.href = 'quiz.html';
 }
+
+function navRandom() {
+    window.location.href = 'resultspage.html';
+}
