@@ -278,3 +278,16 @@ function navQuiz() {
 function navRandom() {
     window.location.href = 'resultspage.html';
 }
+
+
+// js code for homepage (rafay)
+
+$(".validateBtn1").on("click", function(){
+
+    $(".black-trans-bkg").addClass("hide");
+    $(".checkAge-wrapper").addClass("hide");
+});
+
+$(".validateBtn2").on("click", function(){
+    window.location.href='https://babysharklive.com/';
+});
