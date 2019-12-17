@@ -82,9 +82,9 @@ function getRandomDetail(q) {
     let url = buildUrl("random") + "q=" + q;
     getData(url).done(result => {
         getDetail(result.drinks[0].idDrink, renderIngredients);
-        console.log(result)
+        //console.log(result)
         heartedDrinks.push(result)
-        console.log(heartedDrinks)
+        //console.log(heartedDrinks)
     });
 }
 
