@@ -1,3 +1,8 @@
+body {
+    background-color: rgb(38, 43, 48);
+}
+
+
 .btn{
     width: 100%;
 }
@@ -9,4 +14,24 @@
 
 .dislikeIcon{
     color:rgb(231, 110, 110);
+}
+
+.QQuestion{
+     font-size: 30px;
+     color: whitesmoke
+}
+
+.options{
+     font-size: 25px;
+     padding: 5px;
+}
+
+.listBtn{
+    color:whitesmoke;
+    border: solid 2px whitesmoke;
+}
+
+.ingContainer{
+    display: flex;
+    flex-direction: column;
 }

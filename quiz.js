@@ -1,167 +1,179 @@
-$(document).ready(function () {
+var vodkaDrinkID = []
+// console.log(vodkaDrinkID)
 
-    // cocktail db stuff
-    let alcoholicFilters = { strAlcoholic: ["Alcoholic", "Non alcoholic", "Optional alcohol", null] }
+var whiskeyDrinkNameID = []
 
-    const apiHost = "https://the-cocktail-db.p.rapidapi.com/";
-    const endpoints = {
-        lookup: "lookup.php?",
-        filter: "filter.php?",
-        random: "random.php?",
-        ingredients: "list.php?i=list",
-        glass: "list.php?g=list",
-        categories: "list.php?c=list"
-    };
+var brandyDrinkNameID = []
+
+var ginDrinkNameID = []
+
+var tequilaDrinkNameID = []
+
+var rumDrinkNameID = []
+
+// getNonAlcoholic();
+// getRandom();
+// getIngredients();
+// THESE WORK! -- TODO: event handlers
+// getIngredients();
+
+// creating an array of questions to display dynamically
+
+var quizQuestions = [{
+        title: "Which season do you thrive in?",
+        choices: ["Summer", "Fall", "Winter", "Spring"],
+        img: ["https://cdn.stocksnap.io/img-thumbs/960w/KKYCWTRLTI.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/1PUG5S0GO0.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/VZBJUVPO25.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/FKACWTMFK0.jpg"]
+    },
+    {
+        title: "What type of movies do you enjoy?",
+        choices: ["Romantic", "Comedy", "Action", "Horror"],
+        img: ["https://cdn.stocksnap.io/img-thumbs/960w/CNO1FTRUAP.jpg", "https://www.system-concepts.com/wp-content/uploads/2018/04/iStock-908333824-cool-granny1-1000px.jpg", "https://miro.medium.com/max/1180/0*7F-QqYhSJLC59U4w.", "https://images.alphacoders.com/787/thumb-350-787294.png"]
+    }
+]
+
+//array of variables for movie types
+var romanticIng = ["egg white", "cream", "milk", "Creme de Cassis", "Chocolate", "Coffee", "espresso", "ameretto", "tea", "kahlua", "red wine", "cocoa", "lavendar", "rose"]
+
+var comedyIng = ["lemon", "Lime", "apple", "orange", "strawberry", "grapefruit", "pineapple", "mango", "berries", "grape", "peach", "cantaloupe"]
+
+var actionIng = ["soda", "tonic water", "cola", "sprite", "club soda", "ginger beer", "ginger ale", "vermouth", "olive"]
+
+var horrorIng = ["soda", "tonic water", "cola", "sprite", "club soda", "ginger beer", "ginger ale"]
+
+// user's selection from the quiz
+var userChoice = []
+
+// user's selected ingredient variable
+var userIng;
+
+//array of spirit
+var summerSpirits = ["tequila", "rum"]
+
+var fallSpirits = ["whiskey", "brandy"]
+
+var winterSpirits = ["whiskey", "brandy"]
+
+var springsSpirits = ["gin", "vodka"]
+
+//counter for the index
+var counter = 0;
+
+//function to generate quiz questions
+function renderQuestion() {
+    if (counter >= quizQuestions.length) {
+        $(".quizcontainer").css("display", "none")
+        $("#QuizQuestion").text("Ingredients")
+        displayIngredients();
+        // console.log(userChoice)
+    } else {
+        $("#QuizQuestion").text(quizQuestions[counter].title)
+        var options = $(".ans");
+        var image = $("img")
+        // console.log(options[0].textContent);
+        for (var i = 0; i < quizQuestions[counter].choices.length; ++i) {
+            options[i].textContent = (quizQuestions[counter].choices[i]);
+            image[i].setAttribute("src", quizQuestions[counter].img[i]);
+        }
+    }
+}
+
+//render first set of questions
+renderQuestion()
+
+//when user selects an option render next question and grab the text value
+$(".next").on("click", function () {
+    counter++;
+    // console.log($(this).find("p"));
+    var text = $(this).find("p").text();
+    // console.log(text);
+    userChoice.push(text)
+    // console.log(userChoice)
+    renderQuestion()
+})
 
 
-    // response objects
-    // { drinks: [ 0: { "strCategory": "Cocktail" }, 1: { "strIngredient": "Lime" }, 2: { "strGlass": "Highball" } ] }
+//display modal with ingredients
+function displayIngredients() {
+    // console.log(userChoice)
+    var ingContainer = $("<div>")
+    ingContainer.attr("class", "ingContainer")
+    $("body").append(ingContainer)
 
-    // https://rapidapi.com/developer/security/Drinkanator
-    const cocktailKey = 'f5fa4c0484mshad6cb57c6f05a3fp195dcejsn6e3f9016299c'
-
-    /**
-     * Get Cocktail by CocktailId
-     * @param {Number} id 
-     */
-    function getById(id) {
-        let url = buildUrl("lookup") + "i=" + id;
-        getData(url).done(result => {
-            console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
-        });;
+    //if statement to render the correct array
+    if (userChoice[1] === "Romantic") {
+        console.log(romanticIng)
+        for (var i = 0; i < romanticIng.length; ++i) {
+            var listBtn = $("<button>")
+            listBtn.attr("class", "listBtn")
+            $(".ingContainer").append(listBtn)
+            listBtn.text(romanticIng[i])
+        }
     }
 
-    /**
-     * Get Random Cocktail with Optional query parameter
-     * @param {String} q 
-     */
-    function getRandom(q) {
-        let url = buildUrl("random") + "q=" + q;
-        getData(url).done(result => {
-            renderDrinkInfo(result);
-            renderIngredients(result);
-        });
+    if (userChoice[1] === "Comedy") {
+        for (var i = 0; i < comedyIng.length; ++i) {
+            var listBtn = $("<button>")
+            listBtn.attr("class", "listBtn")
+            $(".ingContainer").append(listBtn)
+            listBtn.text(comedyIng[i])
+        }
     }
 
-    /**
-     * Get items from filter endpoint
-     * @param {String} q 
-     */
-    function getFilterBy(q) {
-        // a=Alcoholic a=non-Alcoholic
-        // c=Cocktail c=Champagne_flute
-        // i=Lime i=Rum
-        let url = buildUrl("filter") + "i=" + q;
-        getData(url).done(result => {
-            console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
-        });
+    if (userChoice[1] === "Action") {
+        for (var i = 0; i < actionIng.length; ++i) {
+            var listBtn = $("<button>")
+            listBtn.attr("class", "listBtn")
+            $(".ingContainer").append(listBtn)
+            listBtn.text(actionIng[i])
+        }
     }
 
-    /**
-     * returns list of items
-     */
-    function getIngredients() {
-        let url = buildUrl("ingredients");
-        getData(url).done(result => {
-            console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
-        });
+    if (userChoice[1] === "Horror") {
+        for (var i = 0; i < horrorIng.length; ++i) {
+            var listBtn = $("<button>")
+            listBtn.attr("class", "listBtn")
+            $(".ingContainer").append(listBtn)
+            listBtn.text(horrorIng[i])
+        }
+    }
+}
+
+//click event to grab the value the user selects when they see ingredients
+$(document).on("click", "button", function () {
+    userIng = $(this).text();
+    console.log(userIng);
+    getFilterBy(userIng);
+    returnListDrinks();
+})
+
+//function to return list the correct list of spriits by seasons
+function returnListDrinks() {
+    if (userChoice[0] === "Summer") {
+        getFilterBy('Tequila');
+        getFilterBy('Rum');
     }
 
-    /**
-     * returns list of items
-     */
-    function getGlassTypes() {
-        let url = buildUrl("glass");
-        getData(url).done(result => {
-            console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
-        });
+    if (userChoice[0] === "Fall") {
+        getFilterBy('whiskey');
+        getFilterBy('Brandy');
     }
 
-    /**
-     * returns list of items
-     */
-    function getCategories(q) {
-        let url = buildUrl("categories");
-        getData(url).done(result => {
-            console.log(result);
-            renderDrinkInfo(JSON.stringify(result));
-        });
+    if (userChoice[0] === "Winter") {
+        getFilterBy('Whiskey');
+        getFilterBy('Brandy');
     }
 
-    /**
-     * returns non-alcoholic drinks
-     */
-    function getNonAlcoholic() {
-        let url = buildUrl("filter") + "a=Non-Alcoholic";
-        getData(url).then(result => {
-            console.log(reuslt);
-            renderDrinkInfo(JSON.stringify(result));
-        });
+    if (userChoice[0] === "Spring") {
+        getFilterBy('Gin');
+        getFilterBy('Vodka');
     }
 
-    /**
-     * concats strings together to form url + endpoint
-     * @param {string} api 
-     * @returns {string} url
-     */
-    function buildUrl(api) {
-        return apiHost + endpoints[api] || null;
-    }
-
-    /**
-     * get data from api
-     * @returns Promise object
-     */
-    function getData(url) {
-        return $.ajax({
-            url: url,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("x-rapidapi-host", "the-cocktail-db.p.rapidapi.com");
-                xhr.setRequestHeader("x-rapidapi-key", cocktailKey);
-            }
-        })
-    }
-
-    function renderDrinkInfo(data) {
-        // idDrink
-        // strAlcoholic
-        var resultsImage = data.drinks[0].strDrinkThumb
-        let tct = $("#resultsImage");
-        tct.attr("src", resultsImage);
-        tct.attr("style", "height:400px !important;");
-        console.log(resultsImage)
-    }
-
-    function renderIngredients(data) {
-        var ingredients = data.drinks[0]
-        console.log(ingredients)
-        
-
-    }
-
-    $(".likeIcon").on("click", function(){
-        getRandom()
-    });
-
-    $(".dislikeIcon").on("click", function(){
-        getRandom()
-    });
+}
 
 
+//create functions to pull drinks by ingredient type
 
-
-    getNonAlcoholic();
-    getRandom();
-    // getIngredients();
-
-    // THESE WORK! -- TODO: event handlers
-    // getIngredients();
-    // getFilterBy('Vodka');
-    // getFilterBy('Whiskey');
-    // getFilterBy('Rum');
-    // getFilterBy('Gin');
-});
+// getFilterBy('Whiskey');
+// getFilterBy('Rum');
+// getFilterBy('Gin');
+// getFilterBy('lemon');
