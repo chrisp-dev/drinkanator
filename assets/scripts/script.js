@@ -1,4 +1,3 @@
-
 // cocktail db stuff
 let alcoholicFilters = { strAlcoholic: ["Alcoholic", "Non alcoholic", "Optional alcohol", null] }
 
@@ -20,15 +19,38 @@ const endpoints = {
 const cocktailKey = 'f5fa4c0484mshad6cb57c6f05a3fp195dcejsn6e3f9016299c'
 
 /**
- * Get Cocktail by CocktailId
- * @param {Number} id 
- */
+    * Get Cocktail by CocktailId
+    * @param {Number} id 
+    */
 function getById(id) {
     let url = buildUrl("lookup") + "i=" + id;
     getData(url).done(result => {
-        console.log(result);
-        renderDrinkInfo(JSON.stringify(result));
-    });;
+        console.log(result.drinks[0]);
+
+        result = result.drinks[0];
+
+        let ingredients = [];
+        let idx = 1;
+        let ingredientsNotFound = true;
+
+        while (ingredientsNotFound) {
+            if (result[`strIngredient${idx}`] != null) {
+                ingredients.push({ ingredient: result[`strIngredient${idx}`], measure: result[`strMeasure${idx}`] });
+                console.log('in while: ', result[`strIngredient${idx}`]);
+                idx++;
+            } else {
+                ingredientsNotFound = false;
+            }
+        }
+
+        console.log('TCL: INGREDIENTS: ', ingredients);
+        console.log('TCLl Instructions: ', result.strInstructions)
+
+        //render ingredients modal
+        let modal = $('<div>');
+        let title = $('<h3>');
+        // title.text()
+    });
 }
 
 /**
@@ -54,6 +76,7 @@ function getFilterBy(q) {
     let url = buildUrl("filter") + "i=" + q;
     getData(url).done(result => {
         console.log(result);
+        renderDrinkInfo(result);
     });
 }
 
@@ -64,7 +87,7 @@ function getIngredients() {
     let url = buildUrl("ingredients");
     getData(url).done(result => {
         console.log(result);
-        renderDrinkInfo(JSON.stringify(result));
+        renderDrinkInfo(result);
     });
 }
 
@@ -75,7 +98,7 @@ function getGlassTypes() {
     let url = buildUrl("glass");
     getData(url).done(result => {
         console.log(result);
-        renderDrinkInfo(JSON.stringify(result));
+        renderDrinkInfo(result);
     });
 }
 
@@ -86,7 +109,7 @@ function getCategories(q) {
     let url = buildUrl("categories");
     getData(url).done(result => {
         console.log(result);
-        renderDrinkInfo(JSON.stringify(result));
+        renderDrinkInfo(result);
     });
 }
 
@@ -97,7 +120,7 @@ function getNonAlcoholic() {
     let url = buildUrl("filter") + "a=Non-Alcoholic";
     getData(url).then(result => {
         console.log(reuslt);
-        renderDrinkInfo(JSON.stringify(result));
+        renderDrinkInfo(result);
     });
 }
 
@@ -139,20 +162,6 @@ function renderIngredients(data) {
     console.log(ingredients)
 
 }
-
-$(".likeIcon").on("click", function () {
-    getRandom()
-});
-
-$(".dislikeIcon").on("click", function () {
-    getRandom()
-});
-
-
-// getNonAlcoholic();
-getRandom();
-
-
 // THESE WORK! -- TODO: event handlers
 // getIngredients();
 // getFilterBy('Vodka');
@@ -160,6 +169,29 @@ getRandom();
 // getFilterBy('Rum');
 // getFilterBy('Gin');
 
+// weather api stuff WIP
+const API_URL = 'https://api.openweathermap.org/data/2.5/weather?appid=c36ac4ee2ac54475c59bef266d011a17&';
+function getByLatLon(searchQuery) {
+    $.get(`${API_URL}${searchQuery}`)
+        .done(data => {
+            console.log(data.weather[0].main);
+        });
+}
+function geo() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (loc) {
+
+            console.log(loc);
+            searchTerm = `lat=${loc.coords.latitude}&lon=${loc.coords.longitude}`;
+
+            getByLatLon(searchTerm);
+        });
+    }
+}
+
+$(document).ready(function () {
+    geo();
+});
 
 function navQuiz() {
     window.location.href = 'quiz.html';
