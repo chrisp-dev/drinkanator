@@ -176,6 +176,11 @@ span:nth-of-type(5) {
      display: none;
 }
 
+.weatherImage{
+     height: 300px;
+     width: 300px;
+}
+
 @keyframes blink {
      78% {
           color: inherit;
