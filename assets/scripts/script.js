@@ -53,7 +53,10 @@
         // i=Lime i=Rum
         let url = buildUrl("filter") + "i=" + q;
         getData(url).done(result => {
+            console.log("getfilterresult=")
             console.log(result);
+            quizDrinkRecommendation.push(result)
+            // getlistofdrinkIDs(result);
         });
     }
 

@@ -29,9 +29,19 @@ body {
 .listBtn{
     color:whitesmoke;
     border: solid 2px whitesmoke;
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
 }
 
 .ingContainer{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.next{
+    height:300px;
+}
+
