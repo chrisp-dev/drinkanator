@@ -60,8 +60,8 @@ function getById(id) {
 function getRandom(q) {
     let url = buildUrl("random") + "q=" + q;
     getData(url).done(result => {
-
         renderDrinkInfo(result);
+        renderIngredients(result);
     });
 }
 
@@ -149,17 +149,19 @@ function getData(url) {
 
 function renderDrinkInfo(data) {
     // idDrink
-    console.log(data)
     // strAlcoholic
     var resultsImage = data.drinks[0].strDrinkThumb
     let tct = $("#resultsImage");
     tct.attr("src", resultsImage);
     tct.attr("style", "height:400px !important;");
+    console.log(resultsImage)
 }
 
+function renderIngredients(data) {
+    var ingredients = data.drinks[0]
+    console.log(ingredients)
 
-// getFilterBy();
-// getById(11415);
+}
 // THESE WORK! -- TODO: event handlers
 // getIngredients();
 // getFilterBy('Vodka');
@@ -190,3 +192,11 @@ function geo() {
 $(document).ready(function () {
     geo();
 });
+
+function navQuiz() {
+    window.location.href = 'quiz.html';
+}
+
+function navRandom() {
+    window.location.href = 'resultspage.html';
+}

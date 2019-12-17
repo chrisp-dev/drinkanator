@@ -8,59 +8,53 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/257de25400.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/style2.css">
 
 </head>
 
 <body>
+    <div class="flex text-center">
+        <div class="w-full m-6 md:w-1/2 md:mx-auto">
+            <p class="QQuestion">
+                <span id="QuizQuestion">Question</span>
+            </p>
+        </div>
+    </div>
     <!-- flex means row -->
-    <div class="flex my-10 text-center">
+    <div class="flex text-center quizcontainer">
         <!-- w- equates column size in fractions. this is currently column on the left -->
         <div class="w-1/2">
             <div class="h-auto bg-white ">
-                <div>
-                    <img src="https://placekitten.com/300" class="mx-auto my-4">
-                    <p>TEXT</p>
+                <div class="next">
+                    <img id="image1" src="http://placehold.jp/300x450.png" class="mx-auto">
+                    <p class="options"><span class="ans" data-options="1">Answer1</span></p>
                 </div>
 
-                <div>
-                    <img src="https://placekitten.com/300" class="mx-auto my-4">
-                    <p>TEXT</p>
+                <div class="next">
+                    <img id="image2" src="http://placehold.jp/300x450.png" class="mx-auto">
+                    <p class="options"><span class="ans" data-options="2">Answer2</span></p>
                 </div>
             </div>
         </div>
         <!-- w- equates column size in fractions. this is currently column on the right -->
         <div class="w-1/2">
             <div class="h-auto bg-white ">
-                <div>
-                    <img src="https://placekitten.com/300" class="mx-auto my-4">
-                    <p>TEXT</p>
+                <div class="next">
+                    <img id="image3" src="http://placehold.jp/300x450.png" class="mx-auto">
+                    <p class="options"><span class="ans" data-options="3">Answer3</span></p>
                 </div>
 
-                <div>
-                    <img src="https://placekitten.com/300" class="mx-auto my-4">
-                    <p>TEXT</p>
+                <div class="next">
+                    <img id="image4" src="http://placehold.jp/300x450.png" class="mx-auto">
+                    <p class="options"><span class="ans" data-options="4">Answer4</span></p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="flex mb-4">
-        <div class="w-full m-4 my-12 md:w-1/2 md:mx-auto bg-gray-500">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus id voluptates consequatur possimus omnis
-                rem quisquam deleniti quod, fuga quae maiores. Saepe amet ea laborum sapiente architecto excepturi magni
-                necessitatibus.</p>
-
-        </div>
-    </div>
-
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="assets/scripts/script.js"></script>
+    <script src="assets/scripts/quiz.js"></script>
 </body>
 
 </html>
