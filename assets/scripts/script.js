@@ -43,8 +43,71 @@ function getById(id) {
             }
         }
 
+
+    // cocktail db stuff
+    let alcoholicFilters = { strAlcoholic: ["Alcoholic", "Non alcoholic", "Optional alcohol", null] }
+
+    const apiHost = "https://the-cocktail-db.p.rapidapi.com/";
+    const endpoints = {
+        lookup: "lookup.php?",
+        filter: "filter.php?",
+        random: "random.php?",
+        ingredients: "list.php?i=list",
+        glass: "list.php?g=list",
+        categories: "list.php?c=list"
+    };
+
+
+    // response objects
+    // { drinks: [ 0: { "strCategory": "Cocktail" }, 1: { "strIngredient": "Lime" }, 2: { "strGlass": "Highball" } ] }
+
+    // https://rapidapi.com/developer/security/Drinkanator
+    const cocktailKey = 'f5fa4c0484mshad6cb57c6f05a3fp195dcejsn6e3f9016299c'
+
+    /**
+     * Get Cocktail by CocktailId
+     * @param {Number} id 
+     */
+    function getById(id) {
+        let url = buildUrl("lookup") + "i=" + id;
+        getData(url).done(result => {
+            console.log(result);
+            renderDrinkInfo(JSON.stringify(result));
+        });;
+    }
+
+    /**
+     * Get Random Cocktail with Optional query parameter
+     * @param {String} q 
+     */
+    function getRandom(q) {
+        let url = buildUrl("random") + "q=" + q;
+        getData(url).done(result => {
+            renderDrinkInfo(result);
+            renderIngredients(result);
+        });
+    }
+
+    /**
+     * Get items from filter endpoint
+     * @param {String} q 
+     */
+    function getFilterBy(q) {
+        // a=Alcoholic a=non-Alcoholic
+        // c=Cocktail c=Champagne_flute
+        // i=Lime i=Rum
+        let url = buildUrl("filter") + "i=" + q;
+        getData(url).done(result => {
+            console.log("getfilterresult=")
+            console.log(result);
+            quizDrinkRecommendation.push(result)
+            // getlistofdrinkIDs(result);
+        });
+    }
+
         console.log('TCL: INGREDIENTS: ', ingredients);
         console.log('TCLl Instructions: ', result.strInstructions)
+
 
         //render ingredients modal
         let modal = $('<div>');
