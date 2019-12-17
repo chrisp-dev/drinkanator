@@ -1,31 +1,14 @@
-var vodkaDrinkID = []
-// console.log(vodkaDrinkID)
-
-var whiskeyDrinkNameID = []
-
-var brandyDrinkNameID = []
-
-var ginDrinkNameID = []
-
-var tequilaDrinkNameID = []
-
-var rumDrinkNameID = []
-
-// getNonAlcoholic();
-// getRandom();
-// getIngredients();
-// THESE WORK! -- TODO: event handlers
-// getIngredients();
+//store list of drink IDs in this array to display drinks in the results page
+var quizDrinkRecommendation = []
 
 // creating an array of questions to display dynamically
-
 var quizQuestions = [{
-        title: "Which season do you thrive in?",
+        title: "WHICH SEASON DO YOU THRIVE IN?",
         choices: ["Summer", "Fall", "Winter", "Spring"],
-        img: ["https://cdn.stocksnap.io/img-thumbs/960w/KKYCWTRLTI.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/1PUG5S0GO0.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/VZBJUVPO25.jpg", "https://cdn.stocksnap.io/img-thumbs/960w/FKACWTMFK0.jpg"]
+        img: ["assets/images/summer2.jpg", "assets/images/fall2.jpg", "assets/images/winter2.jpg", "assets/images/spring2.jpg"]
     },
     {
-        title: "What type of movies do you enjoy?",
+        title: "WHAT TYPE OF MOVIES DO YOU ENJOY?",
         choices: ["Romantic", "Comedy", "Action", "Horror"],
         img: ["https://cdn.stocksnap.io/img-thumbs/960w/CNO1FTRUAP.jpg", "https://www.system-concepts.com/wp-content/uploads/2018/04/iStock-908333824-cool-granny1-1000px.jpg", "https://miro.medium.com/max/1180/0*7F-QqYhSJLC59U4w.", "https://images.alphacoders.com/787/thumb-350-787294.png"]
     }
@@ -62,7 +45,7 @@ var counter = 0;
 function renderQuestion() {
     if (counter >= quizQuestions.length) {
         $(".quizcontainer").css("display", "none")
-        $("#QuizQuestion").text("Ingredients")
+        $("#QuizQuestion").text("SELECT AN INGREDIENT")
         displayIngredients();
         // console.log(userChoice)
     } else {
@@ -101,7 +84,7 @@ function displayIngredients() {
 
     //if statement to render the correct array
     if (userChoice[1] === "Romantic") {
-        console.log(romanticIng)
+        // console.log(romanticIng)
         for (var i = 0; i < romanticIng.length; ++i) {
             var listBtn = $("<button>")
             listBtn.attr("class", "listBtn")
@@ -141,39 +124,38 @@ function displayIngredients() {
 //click event to grab the value the user selects when they see ingredients
 $(document).on("click", "button", function () {
     userIng = $(this).text();
-    console.log(userIng);
-    getFilterBy(userIng);
+    // console.log(userIng);
+    getFilterByQuiz(userIng);
     returnListDrinks();
+    console.log("display quizDrinkRecommendation array")
+    console.log(quizDrinkRecommendation)
 })
 
 //function to return list the correct list of spriits by seasons
 function returnListDrinks() {
     if (userChoice[0] === "Summer") {
-        getFilterBy('Tequila');
-        getFilterBy('Rum');
+        getFilterByQuiz('Tequila');
+        getFilterByQuiz('Rum');
+    } else if (userChoice[0] === "Fall") {
+        getFilterByQuiz('Whiskey');
+        getFilterByQuiz('Brandy');
+    } else if (userChoice[0] === "Winter") {
+        getFilterByQuiz('Whiskey');
+        getFilterByQuiz('Brandy');
+    } else if (userChoice[0] === "Spring") {
+        getFilterByQuiz('Gin');
+        getFilterByQuiz('Vodka');
     }
-
-    if (userChoice[0] === "Fall") {
-        getFilterBy('whiskey');
-        getFilterBy('Brandy');
-    }
-
-    if (userChoice[0] === "Winter") {
-        getFilterBy('Whiskey');
-        getFilterBy('Brandy');
-    }
-
-    if (userChoice[0] === "Spring") {
-        getFilterBy('Gin');
-        getFilterBy('Vodka');
-    }
-
 }
 
 
-//create functions to pull drinks by ingredient type
 
-// getFilterBy('Whiskey');
+// getFilterBy('whiskey');
 // getFilterBy('Rum');
 // getFilterBy('Gin');
 // getFilterBy('lemon');
+// getNonAlcoholic();
+// getRandom();
+// getIngredients();
+// THESE WORK! -- TODO: event handlers
+// getIngredients();
