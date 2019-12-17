@@ -8,43 +8,48 @@
     <title>Results</title>
 
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles/style2.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/card-flip.css">
 </head>
 
 <body>
-    <div class="flex">
-        <div class="w-full">
-            <div class="h-auto md:m-4 my-10">
-                <div>
-                    <img id="resultsImage" src="https://placeholder.pics/svg/350x400" class="mx-auto">
+    <div class="loader hidden object-center"></div>
+    <div class="h-500 w-full object-center">
+        <div class="logo-brand text-base object-left">
+            <span>D</span>
+            <span>R</span>
+            <span>i</span>
+            <span>N</span>
+            <span>K</span>
+            <span>R</span>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img id="resultsImage" src="https://placeholder.pics/svg/350" alt="booze" class="mx-auto">
+                </div>
+                <div class="flip-card-back">
                 </div>
             </div>
         </div>
     </div>
-    <div class="flex my-10">
+    <div class="my-4 w-full flex">
         <div class="w-1/2">
-            <div class="h-auto m-4">
-                <div class="flex justify-center h-16">
-                    <button class="btn">
-                        <i class="far fa-times-circle fa-2x dislikeIcon"></i>
-                    </button>
-                </div>
-            </div>
+            <button class="btn h-full">
+                <i class="far fa-times-circle fa-3x dislikeIcon"></i>
+            </button>
         </div>
         <div class="w-1/2">
-            <div class="h-auto m-4">
-                <div class="flex justify-center h-16">
-                    <button class="btn">
-                        <i class="far fa-heart fa-2x likeIcon"></i>
-                    </button>
-                </div>
-            </div>
+            <button class="btn h-full">
+                <i class="far fa-heart fa-3x likeIcon"></i>
+            </button>
         </div>
     </div>
     <script src="https://kit.fontawesome.com/257de25400.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="assets/scripts/script.js"></script>
+    <script src="assets/scripts/ingredients.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,5 @@
 # drinkanator :beer:
-- [] Finish README.md
-I'm not sure what it's supposed to do yet.
+Find your best drink for you right now! Picky about your fruit? Take our quiz! Feeling risky? Swipe through the list of random drinks! Hover of the drink image (or click on mobile) to see the drink recipe!
 
 ## Github Pages URL
 [Drinkanator](https://chrisp-dev.github.io/drinkanator)

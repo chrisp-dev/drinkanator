@@ -1,8 +1,7 @@
-*{
+* {
      margin: 0;
      padding: 0;
      box-sizing: border-box;
-
      /* font-family: 'Lilita One', cursive; */
      /* font-family: 'Righteous', cursive; */
      /* font-family: 'Baloo Bhai', cursive; */
@@ -13,14 +12,14 @@
      /* font-family: 'Aclonica', sans-serif; */
 }
 
-body{
+body {
      width: 100vw;
      height: 100vh;
      position: relative;
      background-color: rgb(38, 43, 48);
 }
 
-.checkAge-wrapper{
+.checkAge-wrapper {
      position: absolute;
      width: 100vw;
      height: 100vh;
@@ -28,12 +27,11 @@ body{
      background-color: black;
      filter: blur(8px);
      -webkit-filter: blur(8px);
-     
-     opacity: 0.5;  
+     opacity: 0.5;
      /* overflow: hidden; */
 }
 
-.checkAge{
+.checkAge {
      width: 45%;
      height: 45%;
      background: black;
@@ -44,28 +42,28 @@ body{
      text-align: center;
 }
 
-.centered{
+.centered {
      position: absolute;
      top: 40%;
      left: 50%;
      transform: translate(-50%, -40%);
 }
 
-.centered1{
+.centered1 {
      position: absolute;
      top: 50%;
      left: 50%;
      transform: translate(-50%, -50%);
 }
 
-.border{
+.border {
      /* background: rgb(38, 43, 48); */
      width: 980px;
      height: 480px;
      border-radius: 3.5px;
 }
 
-.logo{
+.logo {
      width: 100%;
      font-size: 150px;
      text-align: center;
@@ -73,7 +71,16 @@ body{
      text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em aqua, 0 0 0.5em aqua, 0 0 0.1em aqua, 0 10px 3px #000;
 }
 
-.button-wrapper{
+.logo-brand {
+     color: #ffffff;
+     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em aqua, 0 0 0.5em aqua, 0 0 0.1em aqua, 0 10px 3px #000;
+}
+
+.text-base {
+     font-size: 2em !important;
+}
+
+.button-wrapper {
      position: absolute;
      top: 70%;
      left: 50%;
@@ -83,7 +90,7 @@ body{
      justify-content: space-between;
 }
 
-button{
+button {
      width: 45%;
      height: 80px;
      font-size: 35px;
@@ -96,67 +103,103 @@ button{
      /* box-shadow:  0 0 20px #ff009d; */
 }
 
-span:nth-of-type(2), span:nth-of-type(5){
+button:focus {
+     outline: none;
+}
+
+span:nth-of-type(2), span:nth-of-type(5) {
      color: #c0bfbf;
 }
 
-span:nth-of-type(2){
+span:nth-of-type(2) {
      animation: blink infinite 2s;
 }
 
-span:nth-of-type(5){
+span:nth-of-type(5) {
      animation: blink infinite 3s;
 }
 
 @keyframes blink {
-     78% { 
-       color: inherit;
-       text-shadow: inherit;
+     78% {
+          color: inherit;
+          text-shadow: inherit;
      }
-     79%{
-        color: #333;
+     79% {
+          color: #333;
      }
      80% {
-       
-       text-shadow: none;
+          text-shadow: none;
      }
      81% {
-       color: inherit;
-       text-shadow: inherit;
+          color: inherit;
+          text-shadow: inherit;
      }
      82% {
-       color: #333;
-       text-shadow: none;
+          color: #333;
+          text-shadow: none;
      }
      83% {
-       color: inherit;
-       text-shadow: inherit;
+          color: inherit;
+          text-shadow: inherit;
      }
      92% {
-       color: #333;
-       text-shadow: none;
+          color: #333;
+          text-shadow: none;
      }
      92.5% {
-       color: inherit;
-       text-shadow: inherit;
+          color: inherit;
+          text-shadow: inherit;
      }
 }
 
 @media only screen and (max-width: 880px) {
-     .logo{
+     .logo {
           font-size: 100px;
      }
 }
 
 @media only screen and (max-width: 570px) {
-     .logo{
+     .logo {
           font-size: 60px;
      }
 }
 
 @media only screen and (max-width: 330px) {
-     .logo{
+     .logo {
           font-size: 50px;
      }
 }
 
+.btn {
+     width: 100%;
+}
+
+.likeIcon {
+     color: rgb(110, 206, 110);
+}
+
+.dislikeIcon {
+     color: rgb(231, 110, 110);
+}
+
+.loader {
+     position: absolute;
+     top: 8px;
+     left: 15%;
+     z-index: 999;
+     border: 16px solid #f3f3f3;
+     border-top: 16px solid #3498db;
+     border-radius: 50%;
+     width: 22px;
+     height: 22px;
+     animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+     0% {
+          transform: rotate(0deg);
+     }
+     100% {
+          transform: rotate(360deg);
+     }
+}
