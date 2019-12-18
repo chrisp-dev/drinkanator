@@ -95,11 +95,11 @@ function getRandomDetail(q) {
 
 function renderAside() {
     let aside = $("<aside>");
-    aside.addClass(['bg-blue-500', 'text-center', 'text-2xl', 'text-red-500']);
+    aside.addClass(["p-4", "rounded-lg", 'text-center', 'text-2xl', 'text-white']);
 
     let body = $("body");
 
-    aside.attr("style", "cursor:pointer;width:300px;height:500px;z-index:1000;position:absolute;top:10%;transition:all 0.5s ease;");
+    aside.attr("style", "background-color:rgba(122,122,122,0.8);cursor:pointer;width:300px;min-height:20px;z-index:1000;position:absolute;top:10%;transition:all 0.5s ease;");
 
     body.append(aside);
 
