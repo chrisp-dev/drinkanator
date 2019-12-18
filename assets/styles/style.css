@@ -39,7 +39,7 @@ h1 {
      width: 47.75vw;
      height: 26.75vw;
      padding: 10px;
-     background: black;
+     background: rgb(38, 43, 48);
      opacity: 0.9;
      border-radius: 5px;
      color: white;
@@ -124,7 +124,8 @@ button.validateBtn2 {
 }
 
 .logo-brand {
-     margin-left: 40px;
+     margin-top:20px;
+     margin-left: 20px;
      color: #ffffff;
      text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em aqua, 0 0 0.5em aqua, 0 0 0.1em aqua, 0 10px 3px #000;
      cursor: pointer;
