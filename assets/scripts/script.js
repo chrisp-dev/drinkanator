@@ -276,24 +276,25 @@ const API_URL = 'https://api.openweathermap.org/data/2.5/weather?appid=c36ac4ee2
 function getByLatLon(searchQuery) {
     $.get(`${API_URL}${searchQuery}`)
         .done(data => {
-            userTemp = (((data.main.temp - 273.15) * 1.80 + 32)).toFixed(0)
-            console.log(userTemp)
-            seasonDrinks()
-
-
+            userTemp = (((data.main.temp - 273.15) * 1.80 + 32)).toFixed(0);
+            seasonDrinks();
         });
 }
 
 function geo() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (loc) {
-
-            console.log(loc);
             searchTerm = `lat=${loc.coords.latitude}&lon=${loc.coords.longitude}`;
-
             getByLatLon(searchTerm);
+        }, function () {
+            $('.checkAge-wrapper').remove();
+            $('.black-trans-bkg').remove();
         });
+    } else {
+        $('.checkAge-wrapper').remove();
+        $('.black-trans-bkg').remove();
     }
+
 }
 
 
@@ -311,7 +312,6 @@ function seasonDrinks() {
     //if temperature is value<50 then return hot drink else return a cold drink
     if (userTemp <= 45) {
         getById(13971);
-        console.log("hot");
         $("#p-text").text("Here is a drink we recommend by recognizing your location!");
         var displayUserTemp = $("<p>");
         $("#p-text").append(displayUserTemp);
@@ -322,7 +322,6 @@ function seasonDrinks() {
 
     } else {
         getById(12890);
-        console.log("cold")
         $("#p-text").text("Here is a drink we recommend by recognizing your location!");
         var displayUserTemp = $("<p>");
         $("#p-text").append(displayUserTemp);
@@ -337,9 +336,6 @@ function seasonDrinks() {
 
 $(".validateBtn1").on("click", function () {
     geo();
-
-    // $(".black-trans-bkg").addClass("hide");
-    // $(".checkAge-wrapper").addClass("hide");
 });
 
 $(".validateBtn2").on("click", function () {
@@ -349,5 +345,4 @@ $(".validateBtn2").on("click", function () {
 $(document).on("click", ".closeBtn", function () {
     $(".black-trans-bkg").addClass("hide");
     $(".checkAge-wrapper").addClass("hide");
-    console.log("WHY")
 })
