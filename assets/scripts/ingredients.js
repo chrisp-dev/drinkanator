@@ -84,12 +84,11 @@ function renderIngredients(eleId, strDrink, imgSrc, ingredients) {
 function getRandomDetail(q) {
     $(".loader").removeClass("hidden");
     let url = buildUrl("random") + "q=" + q;
-    getData(url).done(result => {
-        getDetail(result.drinks[0].idDrink, renderIngredients);
-        //console.log(result)
-        thisDrink = result;
-
-        // console.log(heartedDrinks)
+    getData(url).done(response => {
+        thisDrink = response;
+        result = response.drinks[0];
+        let ingredients = extractIngredients(result);
+        renderIngredients('resultsImage', result.strDrink, result.strDrinkThumb, ingredients);
     });
 }
 
@@ -99,7 +98,7 @@ function renderAside() {
 
     let body = $("body");
 
-    aside.attr("style", "background-color:rgba(122,122,122,0.8);cursor:pointer;width:300px;min-height:20px;z-index:1000;position:absolute;top:10%;transition:all 0.5s ease;");
+    aside.attr("style", "background-color:rgba(122,122,122,0.8);cursor:pointer;width:300px;max-height:530px;z-index:1000;position:absolute;top:10%;transition:all 0.5s ease;");
 
     body.append(aside);
 
@@ -119,7 +118,7 @@ function renderAside() {
     });
 
     // add navigation
-    let ul = $("<ul>");
+    let ul = $("<ol>");
     let qults;
     let pages = [{ home: "index.html" }, { results: "resultspage.html" }, { quiz: "quiz.html" }, { quizults: '#quizults' }];
     pages.forEach(val => {
@@ -161,16 +160,17 @@ renderAside();
 // event handlers for like and dislike
 $(".likeIcon").on("click", function () {
     // flag=true;
+    if (thisDrink) {
+        heartedDrinks.push(thisDrink)
 
-    console.log("liked")
-    heartedDrinks.push(thisDrink)
-
-    getRandomDetail()
-    showHeartedDrinks()
+        getRandomDetail()
+        showHeartedDrinks()
+    } else {
+        getRandomDetail()
+    }
 });
 
 $(".dislikeIcon").on("click", function () {
-    // flag = false;
     getRandomDetail()
 });
 
@@ -186,11 +186,7 @@ function showHeartedDrinks() {
     li.text(heartedDrinks[hdIndex].drinks[0].strDrink)
     hdIndex++;
     $("ul").append(li);
-    // console.log(heartedDrinks[i].drinks[0].strDrink);
 }
-//store hearted drinks into locale storage
-
-//get locale storage items and display
 
 
 
