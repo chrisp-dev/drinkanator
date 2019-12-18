@@ -19,21 +19,21 @@ body {
      background-color: rgb(38, 43, 48);
 }
 
+h1 {
+     font-size: 2em;
+     margin: .67em 0;
+}
+
 .black-trans-bkg {
      position: absolute;
      width: 100vw;
      height: 100vh;
      z-index: 10000;
      background-color: black;
-     /* filter: blur(8px);
-     -webkit-filter: blur(8px); */
-
      opacity: 0.6;
-     /* overflow: hidden; */
 }
 
 .checkAge-wrapper {
-
      width: 48vw;
      height: 27vw;
      background-image: linear-gradient(to right, aqua, deeppink);
@@ -70,7 +70,7 @@ button.validateBtn1 {
      padding: 1px;
      color: aqua;
      margin-bottom: 5px;
-     font-size: 14px;
+     /* font-size: 14px; */
 }
 
 button.validateBtn2 {
@@ -80,7 +80,7 @@ button.validateBtn2 {
      padding: 1px;
      color: deeppink;
      margin-bottom: 5px;
-     font-size: 18px;
+     /* font-size: 18px; */
 }
 
 .centered {
