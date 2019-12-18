@@ -191,7 +191,6 @@ function showHeartedDrinks() {
     $(".tim").remove();
 
     heartedDrinks.forEach((heartedDrink, hdIndex) => {
-        console.log("things!", heartedDrinks[hdIndex].strDrink, hdIndex);
         let li = $("<li class=tim>");
         li.attr('data-idx', hdIndex);
         li.addClass(["text-right", "text-white", "bg-grey-500", "hover:text-black", "hover:bg-gray-500"]);
