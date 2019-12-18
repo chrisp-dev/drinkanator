@@ -102,7 +102,8 @@ function renderAside() {
 
     let body = $("body");
 
-    aside.attr("style", "background-color:rgba(122,122,122,0.8);cursor:pointer;width:300px;max-height:530px;z-index:1000;position:absolute;top:10%;transition:all 0.5s ease;");
+    aside.attr("style", "background-color:rgba(28, 41, 44, 0.8);cursor:pointer;width:300px;max-height:530px;z-index:1000;position:absolute;top:10%;transition:all 0.5s ease;");
+
 
     body.append(aside);
 
