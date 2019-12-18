@@ -145,7 +145,7 @@ function renderAside() {
             li.addClass('text-left');
             li.text(key);
             li.on("click", function () {
-                window.location.href = val[key];
+                window.location.href = prepath + val[key];
             });
             li.addClass(['uppercase', 'hover:text-white', "hover:bg-gray-500"]);
             ul.append(li);

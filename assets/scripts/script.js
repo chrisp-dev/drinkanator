@@ -179,7 +179,7 @@ function getFilterByQuiz(q, quizComplete) {
         localStorage.setItem('savedDrinks', savedDrinks);
 
         if (quizComplete) {
-            window.location.href = "resultspage.html";
+            window.location.href = prepath + "resultspage.html";
         }
     });
 }
@@ -255,7 +255,6 @@ function renderDrinkInfo(data) {
     let tct = $("#resultsImage");
     tct.attr("src", resultsImage);
     tct.attr("style", "height:400px !important;");
-    console.log(resultsImage)
 }
 
 function renderIngredients(data) {
@@ -300,11 +299,11 @@ function geo() {
 
 
 function navQuiz() {
-    window.location.href = 'quiz.html';
+    window.location.href = prepath + 'quiz.html';
 }
 
 function navRandom() {
-    window.location.href = 'resultspage.html';
+    window.location.href = prepath + 'resultspage.html';
 }
 
 
@@ -335,6 +334,8 @@ function seasonDrinks() {
 // js code for homepage (rafay)
 
 $(".validateBtn1").on("click", function () {
+    let userOfAge = true;
+    localStorage.setItem('userOfAge', userOfAge);
     geo();
 });
 
