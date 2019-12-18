@@ -58,6 +58,7 @@ button.validateBtn1 {
      padding: 1px;
      color: rgb(129, 235, 235);
      margin-bottom: 5px;
+}     
 
 .validateBtn-wrapper {
      margin-top: 5px;
@@ -82,9 +83,9 @@ button.validateBtn2 {
 
 button.validateBtn2 {
      background-color: transparent;
-     border: 2px solid deeppink;
+     border: 2px solid rgb(243, 161, 205);
      padding: 1px;
-     color: deeppink;
+     color: rgb(243, 161, 205);
      margin-bottom: 5px;
 }
 
