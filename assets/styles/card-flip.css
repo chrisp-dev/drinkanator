@@ -8,6 +8,7 @@
     margin: 0 auto;
     perspective: 1000px;
     margin-top: 10%;
+    cursor: pointer;
     /* Remove this if you don't want the 3D effect */
 }
 
