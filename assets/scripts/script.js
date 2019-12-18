@@ -1,5 +1,7 @@
 // cocktail db stuff
-let alcoholicFilters = { strAlcoholic: ["Alcoholic", "Non alcoholic", "Optional alcohol", null] }
+let alcoholicFilters = {
+    strAlcoholic: ["Alcoholic", "Non alcoholic", "Optional alcohol", null]
+}
 
 const apiHost = "https://the-cocktail-db.p.rapidapi.com/";
 const endpoints = {
@@ -11,6 +13,12 @@ const endpoints = {
     categories: "list.php?c=list"
 };
 
+//global variables for the weather drink modal
+var userTemp;
+var drinkTitle;
+var image;
+console.log("global" + drinkTitle)
+
 
 // response objects
 // { drinks: [ 0: { "strCategory": "Cocktail" }, 1: { "strIngredient": "Lime" }, 2: { "strGlass": "Highball" } ] }
@@ -19,15 +27,27 @@ const endpoints = {
 const cocktailKey = 'f5fa4c0484mshad6cb57c6f05a3fp195dcejsn6e3f9016299c'
 
 /**
-    * Get Cocktail by CocktailId
-    * @param {Number} id 
-    */
+ * Get Cocktail by CocktailId
+ * @param {Number} id 
+ */
 function getById(id) {
     let url = buildUrl("lookup") + "i=" + id;
     getData(url).done(result => {
         console.log(result.drinks[0]);
-
         result = result.drinks[0];
+        drinkTitle = result.strDrink
+        $("#modalTitle").text(drinkTitle);
+        console.log("test" + drinkTitle)
+        weatherImage = result.strDrinkThumb;
+        var image = $("<img>");
+        image.addClass("weatherImage")
+        image.attr("src", weatherImage)
+        $("#p-text").append(image);
+        var closeBtn = $("<button>");
+        closeBtn.addClass("closeBtn")
+        closeBtn.text("X")
+        $(".modTitle").append(closeBtn)
+
 
         let ingredients = [];
         let idx = 1;
@@ -35,7 +55,10 @@ function getById(id) {
 
         while (ingredientsNotFound) {
             if (result[`strIngredient${idx}`] != null) {
-                ingredients.push({ ingredient: result[`strIngredient${idx}`], measure: result[`strMeasure${idx}`] });
+                ingredients.push({
+                    ingredient: result[`strIngredient${idx}`],
+                    measure: result[`strMeasure${idx}`]
+                });
                 console.log('in while: ', result[`strIngredient${idx}`]);
                 idx++;
             } else {
@@ -45,7 +68,9 @@ function getById(id) {
 
 
         // cocktail db stuff
-        let alcoholicFilters = { strAlcoholic: ["Alcoholic", "Non alcoholic", "Optional alcohol", null] }
+        let alcoholicFilters = {
+            strAlcoholic: ["Alcoholic", "Non alcoholic", "Optional alcohol", null]
+        }
 
         const apiHost = "https://the-cocktail-db.p.rapidapi.com/";
         const endpoints = {
@@ -154,7 +179,7 @@ function getFilterByQuiz(q, quizComplete) {
         localStorage.setItem('savedDrinks', savedDrinks);
 
         if (quizComplete) {
-            window.location.href = "resultspage.html";
+            window.location.href = prepath + "resultspage.html";
         }
     });
 }
@@ -230,7 +255,6 @@ function renderDrinkInfo(data) {
     let tct = $("#resultsImage");
     tct.attr("src", resultsImage);
     tct.attr("style", "height:400px !important;");
-    console.log(resultsImage)
 }
 
 function renderIngredients(data) {
@@ -247,45 +271,79 @@ function renderIngredients(data) {
 
 // weather api stuff WIP
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather?appid=c36ac4ee2ac54475c59bef266d011a17&';
+
 function getByLatLon(searchQuery) {
     $.get(`${API_URL}${searchQuery}`)
         .done(data => {
-            console.log(data.weather[0].main);
+            userTemp = (((data.main.temp - 273.15) * 1.80 + 32)).toFixed(0);
+            seasonDrinks();
         });
 }
+
 function geo() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (loc) {
-
-            console.log(loc);
             searchTerm = `lat=${loc.coords.latitude}&lon=${loc.coords.longitude}`;
-
             getByLatLon(searchTerm);
+        }, function () {
+            $('.checkAge-wrapper').remove();
+            $('.black-trans-bkg').remove();
         });
+    } else {
+        $('.checkAge-wrapper').remove();
+        $('.black-trans-bkg').remove();
     }
+
 }
 
-$(document).ready(function () {
-    geo();
-});
+
 
 function navQuiz() {
-    window.location.href = 'quiz.html';
+    window.location.href = prepath + 'quiz.html';
 }
 
 function navRandom() {
-    window.location.href = 'resultspage.html';
+    window.location.href = prepath + 'resultspage.html';
+}
+
+
+function seasonDrinks() {
+    //if temperature is value<50 then return hot drink else return a cold drink
+    if (userTemp <= 45) {
+        getById(13971);
+        $("#p-text").text("Here is a drink we recommend by recognizing your location!");
+        var displayUserTemp = $("<p>");
+        $("#p-text").append(displayUserTemp);
+        displayUserTemp.text("Current Temp: " + userTemp + "F");
+        $(".validateBtn1").addClass("hide");
+        $(".validateBtn2").addClass("hide");
+
+
+    } else {
+        getById(12890);
+        $("#p-text").text("Here is a drink we recommend by recognizing your location!");
+        var displayUserTemp = $("<p>");
+        $("#p-text").append(displayUserTemp);
+        displayUserTemp.text("Current Temp: " + userTemp + "F");
+        $(".validateBtn1").addClass("hide");
+        $(".validateBtn2").addClass("hide");
+    }
 }
 
 
 // js code for homepage (rafay)
 
-$(".validateBtn1").on("click", function(){
+$(".validateBtn1").on("click", function () {
+    let userOfAge = true;
+    localStorage.setItem('userOfAge', userOfAge);
+    geo();
+});
 
+$(".validateBtn2").on("click", function () {
+    window.location.href = 'https://babysharklive.com/';
+});
+
+$(document).on("click", ".closeBtn", function () {
     $(".black-trans-bkg").addClass("hide");
     $(".checkAge-wrapper").addClass("hide");
-});
-
-$(".validateBtn2").on("click", function(){
-    window.location.href='https://babysharklive.com/';
-});
+})
