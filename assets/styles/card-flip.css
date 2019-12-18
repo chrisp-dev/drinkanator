@@ -2,7 +2,7 @@
 
 .flip-card {
     background-color: transparent;
-    border: 1px solid #f1f1f1;
+    border: 5px solid #242323;
     height: 350px;
     width: 350px;
     margin: 0 auto;
@@ -47,7 +47,7 @@
 /* Style the back side */
 
 .flip-card-back {
-    background-color: rgb(228, 242, 255);
+    background-color: whitesmoke;
     color: black;
     transform: rotateY(180deg);
 }
