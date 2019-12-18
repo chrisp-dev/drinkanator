@@ -43,6 +43,10 @@ function getById(id) {
         image.addClass("weatherImage")
         image.attr("src", weatherImage)
         $("#p-text").append(image);
+        var closeBtn = $("<button>");
+        closeBtn.addClass("closeBtn")
+        closeBtn.text("X")
+        $(".modTitle").append(closeBtn)
 
 
         let ingredients = [];
@@ -275,7 +279,7 @@ function getByLatLon(searchQuery) {
             userTemp = (((data.main.temp - 273.15) * 1.80 + 32)).toFixed(0)
             console.log(userTemp)
             seasonDrinks()
-            
+
 
         });
 }
@@ -315,6 +319,7 @@ function seasonDrinks() {
         $(".validateBtn1").addClass("hide");
         $(".validateBtn2").addClass("hide");
 
+
     } else {
         getById(12890);
         console.log("cold")
@@ -332,7 +337,7 @@ function seasonDrinks() {
 
 $(".validateBtn1").on("click", function () {
     geo();
-    
+
     // $(".black-trans-bkg").addClass("hide");
     // $(".checkAge-wrapper").addClass("hide");
 });
@@ -340,3 +345,9 @@ $(".validateBtn1").on("click", function () {
 $(".validateBtn2").on("click", function () {
     window.location.href = 'https://babysharklive.com/';
 });
+
+$(document).on("click", ".closeBtn", function () {
+    $(".black-trans-bkg").addClass("hide");
+    $(".checkAge-wrapper").addClass("hide");
+    console.log("WHY")
+})
