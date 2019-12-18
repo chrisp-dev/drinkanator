@@ -2,14 +2,7 @@
      margin: 0;
      padding: 0;
      box-sizing: border-box;
-     /* font-family: 'Lilita One', cursive; */
-     /* font-family: 'Righteous', cursive; */
-     /* font-family: 'Baloo Bhai', cursive; */
-     /* font-family: 'Luckiest Guy', cursive; */
-     /* font-family: 'Monoton', cursive; */
-     /* font-family: 'Audiowide', cursive; */
      font-family: 'Rye', cursive;
-     /* font-family: 'Aclonica', sans-serif; */
 }
 
 body {
@@ -21,17 +14,17 @@ body {
 
 }
 
+h1 {
+     font-size: 2em;
+}
+
 .black-trans-bkg {
      position: absolute;
      width: 100vw;
      height: 100vh;
      z-index: 10000;
      background-color: black;
-     /* filter: blur(8px);
-     -webkit-filter: blur(8px); */
-
      opacity: 0.6;
-     /* overflow: hidden; */
 }
 
 .checkAge-wrapper {
@@ -58,17 +51,29 @@ p.text {
      margin-top: 5px;
 }
 
+
 button.validateBtn1 {
      background-color: transparent;
      border: 2px solid rgb(129, 235, 235);
      padding: 1px;
      color: rgb(129, 235, 235);
      margin-bottom: 5px;
+
+.validateBtn-wrapper {
+     margin-top: 5px;
+     display: flex;
+     justify-content: space-around;
+     flex-wrap: wrap;
+     width: 100%;
+     min-height: 55px;
+
 }
 
 button.validateBtn2 {
      background-color: transparent;
+
      border: 2px solid rgb(243, 161, 205);
+
      padding: 1px;
      color: rgb(243, 161, 205);
      margin-bottom: 5px;
@@ -77,12 +82,10 @@ button.validateBtn2 {
 
 button.validateBtn2 {
      background-color: transparent;
-     width: 45%;
      border: 2px solid deeppink;
      padding: 1px;
      color: deeppink;
      margin-bottom: 5px;
-     font-size: 18px;
 }
 
 .centered {
@@ -346,10 +349,10 @@ span:nth-of-type(5) {
 }
 
 aside {
-     overflow-y: scroll;
+     overflow-y: auto;
      left: -400px;
 }
 
 .in {
-     left: 0px;
+     left: -10px;
 }
