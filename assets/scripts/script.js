@@ -258,11 +258,6 @@ function renderDrinkInfo(data) {
 
 }
 
-$(".flip-card-inner").on("click", function () {
-    event.preventDefault();
-    $(this).toggleClass('apply-flip');
-});
-
 function renderIngredients(data) {
     var ingredients = data.drinks[0]
     console.log(ingredients)
