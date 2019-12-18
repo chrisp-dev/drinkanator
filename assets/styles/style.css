@@ -336,10 +336,10 @@ span:nth-of-type(5) {
 }
 
 aside {
-     overflow-y: scroll;
+     overflow-y: auto;
      left: -400px;
 }
 
 .in {
-     left: 0px;
+     left: -10px;
 }
