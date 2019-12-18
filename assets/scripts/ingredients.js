@@ -105,15 +105,12 @@ function renderAside() {
     let showAside = false;
     $('.logo-brand').on('click', function () {
         event.preventDefault();
-        console.log('this', showAside);
         showAside = !showAside;
         let aside = $("aside");
         if (showAside) {
             aside.addClass("in");
-            // aside.attr("style", "left:10px;");
         } else {
             aside.removeClass("in");
-            // aside.attr("style", "left:-195px;");
         }
     });
 
@@ -128,6 +125,10 @@ function renderAside() {
             if (!savedDrinks || savedDrinks.length === 0) {
                 // dont do things
             } else {
+                // create header
+                let quizResultHeader = $("<h3>");
+                quizResultHeader.text("Quiz Results");
+                qults.prepend(quizResultHeader, "<hr>");
                 // what about hearted drinks
                 savedDrinks.forEach(rec => {
                     let drnk = $("<li>");
