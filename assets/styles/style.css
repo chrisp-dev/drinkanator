@@ -30,14 +30,14 @@ h1 {
 .checkAge-wrapper {
      width: 48vw;
      height: 27vw;
-     background-image: linear-gradient(to right, aqua, deeppink);
+     background-image: linear-gradient(to right, rgb(129, 235, 235), rgb(243, 161, 205));
      z-index: 10000000;
      border-radius: 10px;
 }
 
 .checkAge {
-     width: 47.5vw;
-     height: 26.5vw;
+     width: 47.75vw;
+     height: 26.75vw;
      padding: 10px;
      background: black;
      opacity: 0.9;
@@ -46,9 +46,19 @@ h1 {
      /* text-align: center; */
 }
 
+
 p.text {
      margin-top: 5px;
 }
+
+
+button.validateBtn1 {
+     background-color: transparent;
+     border: 2px solid rgb(129, 235, 235);
+     padding: 1px;
+     color: rgb(129, 235, 235);
+     margin-bottom: 5px;
+}     
 
 .validateBtn-wrapper {
      margin-top: 5px;
@@ -57,21 +67,25 @@ p.text {
      flex-wrap: wrap;
      width: 100%;
      min-height: 55px;
-}
 
-button.validateBtn1 {
-     background-color: transparent;
-     border: 2px solid aqua;
-     padding: 1px;
-     color: aqua;
-     margin-bottom: 5px;
 }
 
 button.validateBtn2 {
      background-color: transparent;
-     border: 2px solid deeppink;
+
+     border: 2px solid rgb(243, 161, 205);
+
      padding: 1px;
-     color: deeppink;
+     color: rgb(243, 161, 205);
+     margin-bottom: 5px;
+}
+
+
+button.validateBtn2 {
+     background-color: transparent;
+     border: 2px solid rgb(243, 161, 205);
+     padding: 1px;
+     color: rgb(243, 161, 205);
      margin-bottom: 5px;
 }
 
@@ -110,7 +124,8 @@ button.validateBtn2 {
 }
 
 .logo-brand {
-     margin-left: 40px;
+     margin-top:20px;
+     margin-left: 20px;
      color: #ffffff;
      text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em aqua, 0 0 0.5em aqua, 0 0 0.1em aqua, 0 10px 3px #000;
      cursor: pointer;
@@ -171,8 +186,8 @@ span:nth-of-type(5) {
 }
 
 .weatherImage {
-     height: 10vw;
-     width: 10vw;
+     height: 15vw;
+     width: 20vw;
 }
 
 .closeBtn {
@@ -187,6 +202,12 @@ span:nth-of-type(5) {
 .modTitle{
      display: flex;
      justify-content: space-between;
+}
+
+#resultsImage{
+     height:100%;
+     width: 100%;
+
 }
 
 @keyframes blink {
@@ -241,10 +262,6 @@ span:nth-of-type(5) {
           height: 44vw;
      }
 
-     .weatherImage {
-          height: 100px;
-          width: 100px;
-     }
 
 }
 
@@ -261,9 +278,22 @@ span:nth-of-type(5) {
      .logo {
           font-size: 60px;
      }
+
+     .checkAge-wrapper {
+
+          width: 80vw;
+          height: 80vw;
+     }
+
+     .checkAge {
+          width: 79vw;
+          height: 79vw;
+          border-radius: 10px;
+     }
 }
 
-@media only screen and (max-width: 425px) {
+/* @media only screen and (max-width: 425px) {
+     
      .checkAge-wrapper {
 
           width: 80vw;
@@ -277,7 +307,22 @@ span:nth-of-type(5) {
      }
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 421px) {
+     
+     .checkAge-wrapper {
+
+          width: 80vw;
+          height: 80vw;
+     }
+
+     .checkAge {
+          width: 79vw;
+          height: 79vw;
+          border-radius: 10px;
+     }
+} */
+
+/* @media only screen and (max-width: 320px) {
      .checkAge-wrapper {
 
           width: 80vw;
@@ -288,12 +333,24 @@ span:nth-of-type(5) {
           width: 79vw;
           height: 69vw;
      }
-}
+} */
 
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 370px) {
      .logo {
           font-size: 50px;
+     }
+
+     .checkAge-wrapper {
+
+          width: 80vw;
+          height: 100vw;
+     }
+
+     .checkAge {
+          width: 79vw;
+          height: 99vw;
+          border-radius: 10px;
      }
 }
 
