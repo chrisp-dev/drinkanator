@@ -35,17 +35,16 @@ body {
 }
 
 .checkAge-wrapper {
-
      width: 48vw;
      height: 27vw;
-     background-image: linear-gradient(to right, aqua, deeppink);
+     background-image: linear-gradient(to right, rgb(129, 235, 235), rgb(243, 161, 205));
      z-index: 10000000;
      border-radius: 10px;
 }
 
 .checkAge {
-     width: 47.5vw;
-     height: 26.5vw;
+     width: 47.75vw;
+     height: 26.75vw;
      padding: 10px;
      background: black;
      opacity: 0.9;
@@ -54,26 +53,27 @@ body {
      /* text-align: center; */
 }
 
+
 p.text {
      margin-top: 5px;
 }
 
-.validateBtn-wrapper {
-     margin-top: 5px;
-     display: flex;
-     justify-content: space-between;
-     flex-wrap: wrap;
-}
-
 button.validateBtn1 {
      background-color: transparent;
-     width: 45%;
-     border: 2px solid aqua;
+     border: 2px solid rgb(129, 235, 235);
      padding: 1px;
-     color: aqua;
+     color: rgb(129, 235, 235);
      margin-bottom: 5px;
-     font-size: 14px;
 }
+
+button.validateBtn2 {
+     background-color: transparent;
+     border: 2px solid rgb(243, 161, 205);
+     padding: 1px;
+     color: rgb(243, 161, 205);
+     margin-bottom: 5px;
+}
+
 
 button.validateBtn2 {
      background-color: transparent;
