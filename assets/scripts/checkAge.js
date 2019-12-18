@@ -2,7 +2,7 @@
 let userOfAge = localStorage.getItem('userOfAge') || false;
 let deployed = (window.location.host === "chrisp-dev.github.io");
 let localFileOrigin = window.location.origin === 'file://';
-let prepath = deployed ? '/drinkanator/' : '';
+let prepath = deployed ? '/drinkanator/' : '/';
 if (!userOfAge && (!localFileOrigin && window.location.pathname !== prepath && window.location.pathname !== (prepath + 'index.html'))) {
     window.location.href = prepath + 'index.html';
 } else if (userOfAge && window.location.pathname === (prepath + 'index.html')) {
