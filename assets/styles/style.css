@@ -210,6 +210,27 @@ span:nth-of-type(5) {
 
 }
 
+
+/* ScrollBar CSS START */
+
+aside::-webkit-scrollbar {
+     width: .2em;
+   }
+    
+aside::-webkit-scrollbar-track {
+     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+
+   }
+    
+aside::-webkit-scrollbar-thumb {
+     background-color: white;
+     box-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em aqua, 0 0 0.5em aqua, 0 0 0.1em aqua;
+     border-radius: 10px;
+   }
+
+/* ScrollBar CSS END */
+
+
 @keyframes blink {
      78% {
           color: inherit;
@@ -400,3 +421,5 @@ aside {
 .in {
      left: -10px;
 }
+
+
