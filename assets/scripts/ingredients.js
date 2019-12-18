@@ -183,7 +183,15 @@ var flag = false;
 function showHeartedDrinks() {
 
     let li = $("<li>");
-    li.text(heartedDrinks[hdIndex].drinks[0].strDrink)
+    li.attr('data-idx', hdIndex);
+    li.text(heartedDrinks[hdIndex].drinks[0].strDrink);
+    li.on('click', function () {
+        event.preventDefault();
+        let idxDrink = $(this).attr('data-idx');
+        let drink = heartedDrinks[idxDrink].drinks[0];
+        let ings = extractIngredients(drink);
+        renderIngredients('resultsImage', drink.strDrink, drink.strDrinkThumb, ings);
+    });
     hdIndex++;
     $("ul").append(li);
 }
