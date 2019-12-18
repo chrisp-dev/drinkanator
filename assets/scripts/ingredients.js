@@ -1,6 +1,10 @@
 // get local storage or set item to []
 let savedDrinks = JSON.parse(localStorage.getItem('savedDrinks')) || [];
 
+//store all the drinks the user "hearted" into this array
+var heartedDrinks = JSON.parse(localStorage.getItem('heartedDrinks')) || [];
+var hdIndex = 0;
+var flag = false;
 /**
     * Get Cocktail by CocktailId
     * @param {Number} id Unique ID of the drink you want the details for
@@ -85,7 +89,7 @@ function getRandomDetail(q) {
     $(".loader").removeClass("hidden");
     let url = buildUrl("random") + "q=" + q;
     getData(url).done(response => {
-        thisDrink = response;
+        thisDrink = response.drinks[0];
         result = response.drinks[0];
         let ingredients = extractIngredients(result);
         renderIngredients('resultsImage', result.strDrink, result.strDrinkThumb, ingredients);
@@ -105,15 +109,12 @@ function renderAside() {
     let showAside = false;
     $('.logo-brand').on('click', function () {
         event.preventDefault();
-        console.log('this', showAside);
         showAside = !showAside;
         let aside = $("aside");
         if (showAside) {
             aside.addClass("in");
-            // aside.attr("style", "left:10px;");
         } else {
             aside.removeClass("in");
-            // aside.attr("style", "left:-195px;");
         }
     });
 
@@ -128,6 +129,10 @@ function renderAside() {
             if (!savedDrinks || savedDrinks.length === 0) {
                 // dont do things
             } else {
+                // create header
+                let quizResultHeader = $("<h3>");
+                quizResultHeader.text("Quiz Results");
+                qults.prepend(quizResultHeader, "<hr>");
                 // what about hearted drinks
                 savedDrinks.forEach(rec => {
                     let drnk = $("<li>");
@@ -155,13 +160,13 @@ function renderAside() {
     $("aside").append(qults);
 }
 
-renderAside();
-
 // event handlers for like and dislike
 $(".likeIcon").on("click", function () {
     // flag=true;
     if (thisDrink) {
-        heartedDrinks.push(thisDrink)
+        heartedDrinks.push(thisDrink);
+        let strHeartedDrinks = JSON.stringify(heartedDrinks);
+        localStorage.setItem('heartedDrinks', strHeartedDrinks);
 
         getRandomDetail()
         showHeartedDrinks()
@@ -174,19 +179,32 @@ $(".dislikeIcon").on("click", function () {
     getRandomDetail()
 });
 
-//store all the drinks the user "hearted" into this array
-var heartedDrinks = []
-var hdIndex = 0;
-var flag = false;
 
 //display list of hearted drinks in a list
 function showHeartedDrinks() {
+    let header = $("#heartedlistheader");
+    if (!header.attr('id')) {
+        header = $("<div id=heartedlistheader>");
+        header.text("Hearted List");
+        $("ul").append(header, "<hr>");
+    }
+    $(".tim").remove();
 
-    let li = $("<li>");
-    li.text(heartedDrinks[hdIndex].drinks[0].strDrink)
-    hdIndex++;
-    $("ul").append(li);
+    heartedDrinks.forEach((heartedDrink, hdIndex) => {
+        let li = $("<li class=tim>");
+        li.attr('data-idx', hdIndex);
+        li.addClass(["text-right", "text-white", "bg-grey-500", "hover:text-black", "hover:bg-gray-500"]);
+        li.text(heartedDrinks[hdIndex].strDrink);
+        li.on('click', function () {
+            event.preventDefault();
+            let idxDrink = $(this).attr('data-idx');
+            let drink = heartedDrinks[idxDrink];
+            let ings = extractIngredients(drink);
+            renderIngredients('resultsImage', drink.strDrink, drink.strDrinkThumb, ings);
+        });
+        $("ul").append(li);
+    })
 }
 
-
-
+renderAside();
+showHeartedDrinks();
