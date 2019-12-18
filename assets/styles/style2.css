@@ -17,6 +17,7 @@ body {
 .options{
      font-size: 25px;
      padding: 5px;
+     padding-top: 20px;
 }
 
 .listBtn{
@@ -35,7 +36,7 @@ body {
 }
 
 .next{
-    height: 250px;
+    height: 475px;
     border: solid 1px whitesmoke;
 }
 
@@ -50,3 +51,46 @@ img{
     margin: 5px;  
 }
 
+.quizcontainer{
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 1250px) {
+    .next{
+        height: 350px;
+        border: solid 1px whitesmoke;
+        padding-bottom:20px;
+    }
+
+}
+
+
+@media only screen and (max-width: 850px) {
+    .next{
+        height: 300px;
+        border: solid 1px whitesmoke;
+        padding-bottom:20px;
+    }
+
+    .options{
+        padding-bottom: 20px;
+   }
+}
+
+@media only screen and (max-width: 600px) {
+    .next{
+        height: 200px;
+        border: solid 1px whitesmoke;
+        padding-bottom:20px;
+    }
+
+    .options{
+        margin:0%;
+        font-size: 20px;
+        padding:3%;
+
+   }
+
+}
