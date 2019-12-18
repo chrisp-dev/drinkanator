@@ -39,7 +39,7 @@ h1 {
      width: 47.75vw;
      height: 26.75vw;
      padding: 10px;
-     background: rgb(38, 43, 48);
+     background: black;
      opacity: 0.9;
      border-radius: 5px;
      color: white;
@@ -186,8 +186,8 @@ span:nth-of-type(5) {
 }
 
 .weatherImage {
-     height: 10vw;
-     width: 10vw;
+     height: 15vw;
+     width: 20vw;
 }
 
 .closeBtn {
@@ -202,6 +202,12 @@ span:nth-of-type(5) {
 .modTitle{
      display: flex;
      justify-content: space-between;
+}
+
+#resultsImage{
+     height:100%;
+     width: 100%;
+
 }
 
 @keyframes blink {
@@ -256,10 +262,6 @@ span:nth-of-type(5) {
           height: 44vw;
      }
 
-     .weatherImage {
-          height: 100px;
-          width: 100px;
-     }
 
 }
 

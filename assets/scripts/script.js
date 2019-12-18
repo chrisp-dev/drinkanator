@@ -311,7 +311,7 @@ function seasonDrinks() {
     //if temperature is value<50 then return hot drink else return a cold drink
     if (userTemp <= 45) {
         getById(13971);
-        $("#p-text").text("Here is a drink we recommend by recognizing your location!");
+        $("#p-text").text("Based on the weather today, this is the best drink for you!");
         var displayUserTemp = $("<p>");
         $("#p-text").append(displayUserTemp);
         displayUserTemp.text("Current Temp: " + userTemp + "F");
@@ -321,7 +321,7 @@ function seasonDrinks() {
 
     } else {
         getById(12890);
-        $("#p-text").text("Here is a drink we recommend by recognizing your location!");
+        $("#p-text").text("Based on the weather today, this is the best drink for you!");
         var displayUserTemp = $("<p>");
         $("#p-text").append(displayUserTemp);
         displayUserTemp.text("Current Temp: " + userTemp + "F");
