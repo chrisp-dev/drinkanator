@@ -292,8 +292,19 @@ function geo() {
             searchTerm = `lat=${loc.coords.latitude}&lon=${loc.coords.longitude}`;
 
             getByLatLon(searchTerm);
+        }, function () {
+
+            console.log('what gives');
+            $('.checkAge-wrapper').remove();
+            $('.black-trans-bkg').remove();
         });
+    } else {
+
+        console.log('what gives22');
+        $('.checkAge-wrapper').remove();
+        $('.black-trans-bkg').remove();
     }
+
 }
 
 
