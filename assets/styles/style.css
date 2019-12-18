@@ -17,6 +17,8 @@ body {
      height: 100vh;
      position: relative;
      background-color: rgb(38, 43, 48);
+     font-family: 'Rye', cursive;
+
 }
 
 .black-trans-bkg {
@@ -311,10 +313,13 @@ span:nth-of-type(5) {
 
 .likeIcon {
      color: rgb(110, 206, 110);
+     /* border: 5px solid white; */
+     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em rgb(110, 206, 110), 0 0 0.5em rgb(110, 206, 110), 0 0 0.1em rgb(110, 206, 110), 0 10px 3px #000;
 }
 
 .dislikeIcon {
      color: rgb(231, 110, 110);
+     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em rgb(231, 110, 110), 0 0 0.5em rgb(231, 110, 110), 0 0 0.1em rgb(231, 110, 110), 0 10px 3px #000;
 }
 
 .loader {
