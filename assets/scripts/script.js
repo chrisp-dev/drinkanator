@@ -255,7 +255,13 @@ function renderDrinkInfo(data) {
     let tct = $("#resultsImage");
     tct.attr("src", resultsImage);
     tct.attr("style", "height:400px !important;");
+
 }
+
+$(".flip-card-inner").on("click", function () {
+    event.preventDefault();
+    $(this).toggleClass('apply-flip');
+});
 
 function renderIngredients(data) {
     var ingredients = data.drinks[0]
