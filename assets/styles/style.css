@@ -19,7 +19,7 @@ body {
      background-color: rgb(38, 43, 48);
 }
 
-.black-trans-bkg{
+.black-trans-bkg {
      position: absolute;
      width: 100vw;
      height: 100vh;
@@ -27,12 +27,12 @@ body {
      background-color: black;
      /* filter: blur(8px);
      -webkit-filter: blur(8px); */
-     
-     opacity: 0.6;  
+
+     opacity: 0.6;
      /* overflow: hidden; */
 }
 
-.checkAge-wrapper{
+.checkAge-wrapper {
 
      width: 48vw;
      height: 27vw;
@@ -41,9 +41,9 @@ body {
      border-radius: 10px;
 }
 
-.checkAge{
-     width: 47vw;
-     height: 26vw;
+.checkAge {
+     width: 47.5vw;
+     height: 26.5vw;
      padding: 10px;
      background: black;
      opacity: 0.9;
@@ -52,18 +52,18 @@ body {
      /* text-align: center; */
 }
 
-p.text{
-     margin-top:5px;
+p.text {
+     margin-top: 5px;
 }
 
-.validateBtn-wrapper{
+.validateBtn-wrapper {
      margin-top: 5px;
      display: flex;
      justify-content: space-between;
      flex-wrap: wrap;
 }
 
-button.validateBtn1{
+button.validateBtn1 {
      background-color: transparent;
      width: 45%;
      border: 2px solid aqua;
@@ -73,7 +73,7 @@ button.validateBtn1{
      font-size: 14px;
 }
 
-button.validateBtn2{
+button.validateBtn2 {
      background-color: transparent;
      width: 45%;
      border: 2px solid deeppink;
@@ -104,7 +104,7 @@ button.validateBtn2{
      border-radius: 3.5px;
 }
 
-.content{
+.content {
      width: 100vw;
      height: 100vh;
 }
@@ -136,10 +136,11 @@ button.validateBtn2{
      width: 50%;
      display: flex;
      justify-content: space-between;
+     flex-wrap: wrap;
 }
 
 button.homepgBtn {
-     width: 45%;
+    
      height: 80px;
      font-size: 35px;
      border-radius: 5px;
@@ -152,7 +153,7 @@ button.homepgBtn {
      transition: 1s;
 }
 
-button.homepgBtn:hover{
+button.homepgBtn:hover {
      text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff0088, 0 0 0.5em #ff0088, 0 0 0.1em #ff0088, 0 10px 3px #000;
 }
 
@@ -160,7 +161,8 @@ button:focus {
      outline: none;
 }
 
-span:nth-of-type(2), span:nth-of-type(5) {
+span:nth-of-type(2),
+span:nth-of-type(5) {
      color: #c0bfbf;
 }
 
@@ -172,13 +174,27 @@ span:nth-of-type(5) {
      animation: blink infinite 3s;
 }
 
-.hide{
+.hide {
      display: none;
 }
 
-.weatherImage{
-     height: 300px;
-     width: 300px;
+.weatherImage {
+     height: 10vw;
+     width: 10vw;
+}
+
+.closeBtn {
+     height: 30px;
+     width: 30px;
+     color:whitesmoke;
+     background-color: transparent;
+     border:none;
+
+}
+
+.modTitle{
+     display: flex;
+     justify-content: space-between;
 }
 
 @keyframes blink {
@@ -186,28 +202,35 @@ span:nth-of-type(5) {
           color: inherit;
           text-shadow: inherit;
      }
+
      79% {
           color: #333;
      }
+
      80% {
           text-shadow: none;
      }
+
      81% {
           color: inherit;
           text-shadow: inherit;
      }
+
      82% {
           color: #333;
           text-shadow: none;
      }
+
      83% {
           color: inherit;
           text-shadow: inherit;
      }
+
      92% {
           color: #333;
           text-shadow: none;
      }
+
      92.5% {
           color: inherit;
           text-shadow: inherit;
@@ -215,21 +238,30 @@ span:nth-of-type(5) {
 }
 
 @media only screen and (max-width: 1000px) {
-     .checkAge-wrapper{
+     .checkAge-wrapper {
 
           width: 80vw;
           height: 45vw;
      }
-     
-     .checkAge{
+
+     .checkAge {
           width: 79vw;
           height: 44vw;
      }
+
+     .weatherImage {
+          height: 100px;
+          width: 100px;
+     }
+
 }
 
 @media only screen and (max-width: 880px) {
      .logo {
           font-size: 100px;
+     }
+     .homepgBtn{
+          width: 100%
      }
 }
 
@@ -240,13 +272,13 @@ span:nth-of-type(5) {
 }
 
 @media only screen and (max-width: 425px) {
-     .checkAge-wrapper{
+     .checkAge-wrapper {
 
           width: 80vw;
           height: 60vw;
      }
-     
-     .checkAge{
+
+     .checkAge {
           width: 79vw;
           height: 59vw;
           border-radius: 10px;
@@ -254,13 +286,13 @@ span:nth-of-type(5) {
 }
 
 @media only screen and (max-width: 360px) {
-     .checkAge-wrapper{
+     .checkAge-wrapper {
 
           width: 80vw;
           height: 70vw;
      }
-     
-     .checkAge{
+
+     .checkAge {
           width: 79vw;
           height: 69vw;
      }
@@ -302,6 +334,7 @@ span:nth-of-type(5) {
      0% {
           transform: rotate(0deg);
      }
+
      100% {
           transform: rotate(360deg);
      }
